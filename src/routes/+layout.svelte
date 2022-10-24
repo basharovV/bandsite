@@ -1,58 +1,56 @@
 <script>
-	import Header from '$lib/header/Header.svelte';
-  import { webVitals } from '$lib/vitals';
-  import { browser } from '$app/env';
-  import { page } from '$app/stores';
-  import '../app.css';
+	import { getStores } from '$app/stores';
+	import '../global.css';
 
-  let analyticsId = import.meta.env.VERCEL_ANALYTICS_ID;
+	const { page } = getStores();
 
-  $: if (browser && analyticsId) {
-    webVitals({
-      path: $page.url.pathname,
-      params: $page.params,
-      analyticsId
-    })
-  }
+	import Nav from '../components/Nav.svelte';
+
+	let isClient = false;
+
+	$: pathname = $page?.url?.pathname;
+
+	$: isLarge = pathname.includes('/shop/vintage-electric');
+	$: isFullWidth = pathname.includes('/blog/full-albums-worth-listening-to');
+
+	$: isProduct = pathname.includes('/shop/');
+
+	if (typeof window !== 'undefined') {
+		isClient = true;
+	}
 </script>
 
-<Header />
+<!-- <Nav /> -->
 
-<main>
+<main class:large={isLarge} class:full-width={isFullWidth}>
 	<slot />
 </main>
 
-<footer>
-	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-</footer>
-
-<style>
+<!-- <GdprBanner cookieName="foo" description="bar" /> -->
+<style lang="scss">
 	main {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		padding: 1rem;
-		width: 100%;
-		max-width: 1024px;
+		max-width: 100vw;
+		min-height: 100vh;
+		background-color: none;
+		padding: 0 0 2em;
 		margin: 0 auto;
 		box-sizing: border-box;
+		filter: contrast(1.2) blur(0.2px);
 	}
 
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 40px;
+	.large {
+		max-width: 70em;
 	}
+	.full-width {
+		max-width: 100vw;
 
-	footer a {
-		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 40px 0;
+		:global(post) {
 		}
+	}
+
+	:global(#cusdis_thread) {
+		margin-top: 2em;
+		max-width: 56em;
+		margin: auto;
 	}
 </style>
