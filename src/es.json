@@ -1,0 +1,19 @@
+{
+	"tagline": "jameando desde 2022",
+    "subtitle": "se introducen a ellos mismos a traves de un medio digital",
+	"shows": {
+		"title": "conciertos",
+		"date": "fecha",
+		"location": "donde",
+		"tickets": "entradas"
+	},
+	"booking": "booking",
+	"band": {
+		"title": "el grupo",
+		"guitar": "guitarra",
+		"vocal": "vocal",
+		"bass": "bajo",
+		"keys": "teclados",
+		"drums": "batería"
+	}
+}

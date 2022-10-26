@@ -1,11 +1,11 @@
 body {
-	font: 400 1em 'IBM Plex Mono', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font: 400 1em 'coffee', Helvetica, Arial, sans-serif;
 	color: #170a0a;
 	margin: 0;
-  padding: 0;
+	padding: 0;
 	overflow-x: hidden;
-  /* background-color: rgba(135, 89, 40, 0.645); */
-  background: url("noise.png");
+	background-color: rgba(238, 233, 227, 0.645);
+	/* background: url('noise.png'); */
 }
 
 * {
@@ -25,6 +25,10 @@ button {
 	font-family: coffee;
 	src: url('fonts/cmunbtl.ttf');
 }
+@font-face {
+	font-family: Elusion;
+	src: url('fonts/ElusionRegular-lVxX.ttf');
+}
 
 h1,
 h2,
@@ -40,7 +44,7 @@ input {
 }
 
 table {
-  font-family: coffee;
+	font-family: coffee;
 }
 h1 {
 	font-size: 2em;
@@ -49,12 +53,12 @@ h1 {
 
 h2 {
 	font-size: 1.4em;
-	font-family: Zina;
+	font-family: coffee;
 }
 
 p {
 	line-height: 1.7em;
-  font-family: coffee;
+	font-family: coffee;
 	/* opacity: 0.9; */
 }
 
@@ -62,7 +66,7 @@ a {
 	color: inherit;
 	cursor: pointer;
 	text-underline-offset: 5px;
-  font-family: coffee;
+	font-family: coffee;
 }
 
 a:hover {

@@ -1,0 +1,19 @@
+{
+	"tagline": "jamming since 2022",
+    "subtitle": "introduces themselves through a digital medium",
+	"shows": {
+		"title": "shows",
+		"date": "date",
+		"location": "location",
+		"tickets": "tickets"
+	},
+	"booking": "booking",
+	"band": {
+		"title": "the band is:",
+		"guitar": "guitar",
+		"vocal": "vocal",
+		"bass": "bass",
+		"keys": "keys",
+		"drums": "drums"
+	}
+}
