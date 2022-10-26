@@ -269,9 +269,9 @@
 			&:hover {
 				filter: sepia(1);
 			}
-			mask-border-source: url('rect-clip.svg');
+			mask-border-source: url('/rect-clip.svg');
 			mask-border-slice: 10%;
-			-webkit-mask-box-image-source: url('rect-clip.svg');
+			-webkit-mask-box-image-source: url('/rect-clip.svg');
 		}
 		.img-1 {
 			grid-row: 1 / 3;

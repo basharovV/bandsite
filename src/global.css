@@ -19,15 +19,15 @@ button {
 
 @font-face {
 	font-family: Zina;
-	src: url('fonts/Zina-Regular.otf');
+	src: url('/fonts/Zina-Regular.otf');
 }
 @font-face {
 	font-family: coffee;
-	src: url('fonts/cmunbtl.ttf');
+	src: url('/fonts/cmunbtl.ttf');
 }
 @font-face {
 	font-family: Elusion;
-	src: url('fonts/ElusionRegular-lVxX.ttf');
+	src: url('/fonts/ElusionRegular-lVxX.ttf');
 }
 
 h1,
