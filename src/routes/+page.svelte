@@ -3,7 +3,6 @@
 	import { t, loading, locale } from '../lib/translations';
 
 	export let data;
-	
 </script>
 
 {#if $loading}
@@ -18,15 +17,17 @@
 			<div class="line" />
 			<p>{$t('home.tagline')}</p>
 			<div class="line" />
-			<a href="?lang=en"> EN </a>
-			<p>/</p>
-			<a href="?lang=es">ES</a>
+			<div class="language">
+				<a href="?lang=en"> EN </a>
+				<p>/</p>
+				<a href="?lang=es">ES</a>
+			</div>
 		</div>
 
 		<div class="sections">
 			<div class="grid">
-				<img class="img-2" src="band-media/flower-power.png" />
 				<img class="img-1" src="band-media/calling.jpg" />
+				<img class="img-2" src="band-media/flower-power.png" />
 				<img class="img-3" src="band-media/studio-1.jpeg" />
 
 				<section class="dates">
@@ -186,6 +187,11 @@
 		padding: 0;
 		height: 100%;
 		position: relative;
+
+		@media screen and (max-width: 900px) {
+			flex-direction: column;
+			margin: 2em;
+		}
 		.title {
 			p {
 				margin: 0 0 0.5em 2em;
@@ -196,6 +202,15 @@
 			color: black;
 			margin: 0;
 			white-space: nowrap;
+		}
+
+		.language {
+			display: flex;
+			@media screen and (max-width: 900px) {
+				position: absolute;
+				top: -20px;
+				right: -20px;
+			}
 		}
 
 		.members {
@@ -211,6 +226,13 @@
 			z-index: 2;
 			position: relative;
 			white-space: nowrap;
+
+			@media screen and (max-width: 900px) {
+				font-size: 3em;
+			}
+			@media screen and (max-width: 600px) {
+				font-size: 2.5em;
+			}
 		}
 		a {
 			font-size: 1.5em;
@@ -228,6 +250,11 @@
 		border-left: 1px solid rgb(37, 36, 36);
 		border-right: 1px solid rgb(44, 43, 43);
 		margin: 0.2em 5em;
+
+		@media screen and (max-width: 900px) {
+			flex-direction: column;
+			margin: 0.2em 1em;
+		}
 	}
 
 	section {
@@ -261,9 +288,24 @@
 		grid-template-columns: minmax(60%, 700px) auto;
 		grid-template-rows: 180px 1fr auto;
 		z-index: 1;
+		width: 100%;
+
+		@media screen and (max-width: 900px) {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+
+			.img-2 {
+				display: none;
+			}
+
+			section {
+				height: fit-content;
+			}
+		}
 
 		img {
-			display: block;
+			display: flex;
 			position: relative;
 			filter: grayscale(0) contrast(0.7) brightness(1.1) saturate(1.7);
 			&:hover {
@@ -272,12 +314,18 @@
 			mask-border-source: url('/rect-clip.svg');
 			mask-border-slice: 10%;
 			-webkit-mask-box-image-source: url('/rect-clip.svg');
+
+			height: 100%;
+			@media screen and (max-width: 900px) {
+				height: auto;
+				flex: 0 1 auto;
+			}
 		}
+
 		.img-1 {
 			grid-row: 1 / 3;
 			grid-column: 1;
 			object-fit: cover;
-			height: 100%;
 			filter: grayscale(1);
 		}
 
@@ -285,19 +333,16 @@
 			grid-row: 1;
 			grid-column: 2;
 			object-fit: cover;
-			height: 100%;
 		}
 
 		.img-3 {
 			grid-row: 2;
 			grid-column: 2;
 			object-fit: cover;
-			height: 100%;
 		}
 		.img-4 {
 			grid-column: 2;
 			object-fit: cover;
-			height: 100%;
 		}
 		.dates {
 			grid-row: 3;
@@ -319,16 +364,30 @@
 		}
 		.video {
 			height: 100%;
+			@media screen and (max-width: 900px) {
+				height: auto;
+				width: 100%;
+			}
 		}
 		.members {
 			color: white;
 			position: relative;
 			background-color: #030202;
+			@media screen and (max-width: 900px) {
+				width: 100%;
+			}
 		}
 		.poem {
 			color: white;
 			position: relative;
 			background-color: #030202;
+			@media screen and (max-width: 900px) {
+				height: auto;
+				flex: 0 1 auto;
+				background-color: white;
+				color: #030202;
+				transform: rotate(10deg);
+			}
 		}
 	}
 
