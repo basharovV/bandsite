@@ -16,7 +16,7 @@
 		type: 'website',
 		images: [
 			{
-				url: 'og.webp',
+				url: '/og.webp',
 				width: 850,
 				height: 650,
 				alt: 'band'
@@ -46,7 +46,8 @@
 
 		<div class="sections">
 			<div class="grid">
-				<img class="img-1" src="band-media/calling.webp" />
+				<!-- <img class="img-1" src="band-media/calling.webp" /> -->
+				<video src="band-media/walking-in-ragtime-outro.mp4" controls async/>
 				<img class="img-2" src="band-media/flower-power.webp" />
 				<img class="img-3" src="band-media/studio-1.webp" />
 
@@ -411,6 +412,17 @@
 			}
 		}
 
+		video {
+			grid-row: 1 / 3;
+			grid-column: 1;
+			background-color: #030202;
+			width: 100%;
+			height: 100%;
+			mask-border-source: url('/rect-clip.svg');
+			mask-border-slice: 10%;
+			-webkit-mask-box-image-source: url('/rect-clip.svg');
+		}
+
 		img {
 			display: flex;
 			position: relative;
@@ -472,7 +484,7 @@
 
 			transform: rotateZ(-0.5deg) rotateX(2deg);
 			z-index: -1;
-			background-color: rgb(44, 38, 38);
+			background-color: rgb(58, 35, 35);
 			background-image: url('/dark-tire.png');
 			p {
 				margin: 0;
