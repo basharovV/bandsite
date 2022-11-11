@@ -26,9 +26,9 @@
 
 		<div class="sections">
 			<div class="grid">
-				<img class="img-1" src="band-media/calling.jpg" />
-				<img class="img-2" src="band-media/flower-power.png" />
-				<img class="img-3" src="band-media/studio-1.jpeg" />
+				<img class="img-1" src="band-media/calling.webp" />
+				<img class="img-2" src="band-media/flower-power.webp" />
+				<img class="img-3" src="band-media/studio-1.webp" />
 
 				<div class="text-divider">
 					<p>people come, people go</p>
