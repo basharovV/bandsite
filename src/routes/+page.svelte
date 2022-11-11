@@ -228,12 +228,19 @@
 			margin: 2em;
 		}
 		.title {
+			@media screen and (max-width: 900px) {
+				align-self: center;
+			}
 			p {
 				margin: 0 0 0.5em 2em;
 				opacity: 0.5;
 				word-wrap: break-spaces;
 				white-space: normal;
-
+				@media screen and (max-width: 900px) {
+					max-width: 300px;
+					text-align: center;
+					margin: 0 auto;
+				}
 			}
 		}
 		p {
@@ -287,10 +294,10 @@
 		position: relative;
 		border-left: 1px solid rgb(37, 36, 36);
 		border-right: 1px solid rgb(44, 43, 43);
-		
-			@media screen and (max-width: 900px) {
-				width: 100%;
-			}
+
+		@media screen and (max-width: 900px) {
+			width: 100%;
+		}
 		&:after {
 			content: "There's purple in the sky tonight - And a rain rising from below";
 			transform: rotate(270deg);
@@ -438,6 +445,15 @@
 		}
 		.video {
 			grid-row: 6;
+			grid-column: 1;
+			height: 100%;
+			@media screen and (max-width: 900px) {
+				height: auto;
+				width: 100%;
+			}
+		}
+		.video-2 {
+			grid-row: 7;
 			grid-column: 1;
 			height: 100%;
 			@media screen and (max-width: 900px) {
