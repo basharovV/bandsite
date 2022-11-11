@@ -15,5 +15,8 @@
 		"bass": "bass",
 		"keys": "keys",
 		"drums": "drums"
+	},
+	"elpato": {
+		"description": "rehearsals, jams, outtakes from the studio"
 	}
 }

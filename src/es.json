@@ -15,5 +15,8 @@
 		"bass": "bajo",
 		"keys": "teclados",
 		"drums": "batería"
+	},
+	"elpato": {
+		"description": "ensayos, jams, grabaciones del estudio"
 	}
 }

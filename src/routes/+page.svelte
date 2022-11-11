@@ -97,8 +97,10 @@
 
 				<section class="rehearsals">
 					<img src="el-pato-records.png" />
-					<a href="https://www.youtube.com/channel/UCy_39NlQINm-Nt_F5vR3deA"><h2>☞ El Pato Records</h2></a>
-					<h1>rehearsals, jams, outtakes from the studio</h1>
+					<a href="https://www.youtube.com/channel/UCy_39NlQINm-Nt_F5vR3deA"
+						><h2>☞ El Pato Records</h2></a
+					>
+					<h1>+ {$t('home.elpato.description')}</h1>
 				</section>
 
 				<!-- 
@@ -219,6 +221,7 @@
 		padding: 0;
 		height: 100%;
 		position: relative;
+		width: 100%;
 
 		@media screen and (max-width: 900px) {
 			flex-direction: column;
@@ -228,6 +231,9 @@
 			p {
 				margin: 0 0 0.5em 2em;
 				opacity: 0.5;
+				word-wrap: break-spaces;
+				white-space: normal;
+
 			}
 		}
 		p {
@@ -281,6 +287,10 @@
 		position: relative;
 		border-left: 1px solid rgb(37, 36, 36);
 		border-right: 1px solid rgb(44, 43, 43);
+		
+			@media screen and (max-width: 900px) {
+				width: 100%;
+			}
 		&:after {
 			content: "There's purple in the sky tonight - And a rain rising from below";
 			transform: rotate(270deg);
@@ -288,6 +298,9 @@
 			top: 400px;
 			opacity: 0.7;
 			position: absolute;
+			@media screen and (max-width: 900px) {
+				display: none;
+			}
 		}
 		&:before {
 			content: 'Greed and gluttony _ Are synonyms at times _  When every fool hungers  _  For that lady all dressed in paint';
@@ -296,6 +309,10 @@
 			opacity: 0.7;
 			top: 600px;
 			position: absolute;
+
+			@media screen and (max-width: 900px) {
+				display: none;
+			}
 		}
 		margin: 0.2em 5em;
 
@@ -400,6 +417,9 @@
 		}
 		.text-divider {
 			grid-column: 1 / 4;
+			@media screen and (max-width: 900px) {
+				display: none;
+			}
 		}
 		.contact {
 			grid-row: 4;
@@ -435,6 +455,7 @@
 			background-image: url('dark-tire.png');
 			@media screen and (max-width: 900px) {
 				width: 100%;
+				height: fit-content;
 			}
 			small {
 				opacity: 0.7;
@@ -455,6 +476,14 @@
 				transform: rotate(10deg);
 			}
 		}
+		@keyframes rotate {
+			from {
+				transform: rotate(0turn);
+			}
+			to {
+				transform: rotate(-1turn);
+			}
+		}
 		.rehearsals {
 			grid-row: 7;
 			grid-column: 2 / 4;
@@ -462,9 +491,10 @@
 			background-image: url('dark-tire.png');
 			text-align: center;
 			img {
-				width: 100px;
+				width: 80px;
 				height: auto;
 				margin: 2em auto;
+				animation: rotate 4s infinite forwards linear;
 			}
 		}
 	}
