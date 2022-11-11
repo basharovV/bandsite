@@ -126,7 +126,6 @@
     img {
       object-fit: cover;
       transition: all 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
-    filter: grayscale(1);
     }
 
     > iframe,

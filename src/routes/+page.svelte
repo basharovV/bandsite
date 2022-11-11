@@ -30,6 +30,16 @@
 				<img class="img-2" src="band-media/flower-power.png" />
 				<img class="img-3" src="band-media/studio-1.jpeg" />
 
+				<div class="text-divider">
+					<p>people come, people go</p>
+					<div class="page-divider" />
+					<p>people laugh, people cry</p>
+					<div class="page-divider" />
+					<p>sometimes they look at each other</p>
+					<div class="page-divider" />
+					<p>and not know what to say</p>
+				</div>
+
 				<section class="dates">
 					<h2>✼ {$t('home.shows.title')}</h2>
 					<table>
@@ -71,6 +81,27 @@
 					<small>{$t('home.band.drums')}</small>
 				</section>
 
+				<div class="text-divider">
+					<p>There's a problem out there, somewhere</p>
+					<div class="page-divider" />
+					<p>And we pretend like it just don't exist</p>
+					<div class="page-divider" />
+					<p>You know exactly what I'm talking about</p>
+					<div class="page-divider" />
+					<p>I'm talking about this</p>
+				</div>
+
+				<div class="video-2">
+					<YoutubeVideo videoId="wemrSTU7fYA" platform="yt" />
+				</div>
+
+				<section class="rehearsals">
+					<img src="el-pato-records.png" />
+					<a href="https://www.youtube.com/channel/UCy_39NlQINm-Nt_F5vR3deA"><h2>☞ El Pato Records</h2></a>
+					<h1>rehearsals, jams, outtakes from the studio</h1>
+				</section>
+
+				<!-- 
 				<section class="poem">
 					<small>
 						There's people on the streets<br />
@@ -115,19 +146,20 @@
 						--- Written by Michael Kirkland
 					</small>
 				</section>
-			</div>
+			</div> -->
 
-			<div class="text-divider">
-				<p>people come, people go</p>
-				<div class="page-divider" />
-				<p>people laugh, people cry</p>
-				<div class="page-divider" />
-				<p>sometimes they look at each other</p>
-				<div class="page-divider" />
-				<p>and not know what to say</p>
+				<div class="text-divider">
+					<p>people come, people go</p>
+					<div class="page-divider" />
+					<p>people laugh, people cry</p>
+					<div class="page-divider" />
+					<p>sometimes they look at each other</p>
+					<div class="page-divider" />
+					<p>and not know what to say</p>
+				</div>
 			</div>
-		</div>
-	</container>
+		</div></container
+	>
 	<footer>© Uncle John's Band 2022</footer>
 {/if}
 
@@ -212,7 +244,6 @@
 				right: -20px;
 			}
 		}
-
 		.members {
 			display: flex;
 			gap: 1em;
@@ -247,8 +278,25 @@
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 		grid-template-rows: auto auto auto auto;
 		min-height: inherit;
+		position: relative;
 		border-left: 1px solid rgb(37, 36, 36);
 		border-right: 1px solid rgb(44, 43, 43);
+		&:after {
+			content: "There's purple in the sky tonight - And a rain rising from below";
+			transform: rotate(270deg);
+			left: -600px;
+			top: 400px;
+			opacity: 0.7;
+			position: absolute;
+		}
+		&:before {
+			content: 'Greed and gluttony _ Are synonyms at times _  When every fool hungers  _  For that lady all dressed in paint';
+			transform: rotate(90deg);
+			right: -600px;
+			opacity: 0.7;
+			top: 600px;
+			position: absolute;
+		}
 		margin: 0.2em 5em;
 
 		@media screen and (max-width: 900px) {
@@ -285,7 +333,7 @@
 		gap: 5px;
 		grid-row: 1;
 		display: grid;
-		grid-template-columns: minmax(60%, 700px) auto;
+		grid-template-columns: minmax(60%, 700px) 1fr 1fr;
 		grid-template-rows: 180px 1fr auto;
 		z-index: 1;
 		width: 100%;
@@ -307,10 +355,6 @@
 		img {
 			display: flex;
 			position: relative;
-			filter: grayscale(0) contrast(0.7) brightness(1.1) saturate(1.7);
-			&:hover {
-				filter: sepia(1);
-			}
 			mask-border-source: url('/rect-clip.svg');
 			mask-border-slice: 10%;
 			-webkit-mask-box-image-source: url('/rect-clip.svg');
@@ -326,18 +370,18 @@
 			grid-row: 1 / 3;
 			grid-column: 1;
 			object-fit: cover;
-			filter: grayscale(1);
+			/* filter: grayscale(1); */
 		}
 
 		.img-2 {
 			grid-row: 1;
-			grid-column: 2;
+			grid-column: 2 / 4;
 			object-fit: cover;
 		}
 
 		.img-3 {
 			grid-row: 2;
-			grid-column: 2;
+			grid-column: 2 / 4;
 			object-fit: cover;
 		}
 		.img-4 {
@@ -345,24 +389,36 @@
 			object-fit: cover;
 		}
 		.dates {
-			grid-row: 3;
-			grid-column: 1;
-			left: -10px;
+			grid-row: 4;
+			grid-column: 1 / 3;
+			color: rgb(255, 255, 255);
+			transform: rotateZ(0.35deg) rotateX(0.5deg);
+			z-index: -1;
 			position: relative;
-			background-color: rgb(30, 27, 27);
+			background-color: rgb(44, 38, 38);
+			background-image: url('dark-tire.png');
+		}
+		.text-divider {
+			grid-column: 1 / 4;
 		}
 		.contact {
-			grid-row: 3;
-			grid-column: 2;
-			color: rgb(246, 237, 237);
-			background-color: rgb(20, 10, 10);
+			grid-row: 4;
+			grid-column: 3 / 4;
+			color: rgb(244, 235, 235);
+			/* background-color: rgb(20, 10, 10); */
 			position: relative;
 
+			transform: rotateZ(-0.5deg) rotateX(2deg);
+			z-index: -1;
+			background-color: rgb(44, 38, 38);
+			background-image: url('dark-tire.png');
 			p {
 				margin: 0;
 			}
 		}
 		.video {
+			grid-row: 6;
+			grid-column: 1;
 			height: 100%;
 			@media screen and (max-width: 900px) {
 				height: auto;
@@ -370,23 +426,45 @@
 			}
 		}
 		.members {
-			color: white;
+			height: 100%;
+			grid-row: 6;
+			grid-column: 2 / 4;
+			color: rgb(244, 235, 235);
 			position: relative;
-			background-color: #030202;
+			background-color: rgb(44, 38, 38);
+			background-image: url('dark-tire.png');
 			@media screen and (max-width: 900px) {
 				width: 100%;
 			}
+			small {
+				opacity: 0.7;
+			}
 		}
 		.poem {
+			grid-row: 7;
+			grid-column: 1 / 4;
 			color: white;
 			position: relative;
-			background-color: #030202;
+			background: url('noise.png');
+			/* background-color: #030202; */
 			@media screen and (max-width: 900px) {
 				height: auto;
 				flex: 0 1 auto;
 				background-color: white;
 				color: #030202;
 				transform: rotate(10deg);
+			}
+		}
+		.rehearsals {
+			grid-row: 7;
+			grid-column: 2 / 4;
+			background-color: rgb(44, 38, 38);
+			background-image: url('dark-tire.png');
+			text-align: center;
+			img {
+				width: 100px;
+				height: auto;
+				margin: 2em auto;
 			}
 		}
 	}

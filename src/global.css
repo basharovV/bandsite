@@ -4,8 +4,8 @@ body {
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden;
-	background-color: rgba(238, 233, 227, 0.645);
-	/* background: url('noise.png'); */
+	background-color: #f1d4b0a4;
+	background-image: url('rice-paper-2.png');
 }
 
 * {
