@@ -47,7 +47,7 @@
 		<div class="sections">
 			<div class="grid">
 				<!-- <img class="img-1" src="band-media/calling.webp" /> -->
-				<video src="band-media/walking-in-ragtime-outro.mp4" controls async/>
+				<video src="band-media/walking-in-ragtime-outro.mp4#t=0.01" preload="metadata" controls poster="/calling.webp" async />
 				<img class="img-2" src="band-media/flower-power.webp" />
 				<img class="img-3" src="band-media/studio-1.webp" />
 
