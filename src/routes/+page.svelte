@@ -421,6 +421,10 @@
 			mask-border-source: url('/rect-clip.svg');
 			mask-border-slice: 10%;
 			-webkit-mask-box-image-source: url('/rect-clip.svg');
+			@media screen and (max-width: 900px) {
+				height: auto;
+				flex: 0 1 auto;
+			}
 		}
 
 		img {
