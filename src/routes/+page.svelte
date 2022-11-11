@@ -190,7 +190,7 @@
 		display: block;
 		max-width: 1250px;
 		margin: auto;
-		padding: 0 2em;
+		padding: 0 3em;
 		@media screen and (max-width: 900px) {
 			padding: 0 1em;
 		}
