@@ -35,7 +35,6 @@
 		padding: 0 0 2em;
 		margin: 0 auto;
 		box-sizing: border-box;
-		filter: contrast(1.2) blur(0.2px);
 	}
 
 	.large {

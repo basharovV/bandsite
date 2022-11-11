@@ -1,9 +1,29 @@
 <script lang="ts">
 	import YoutubeVideo from '../components/YoutubeVideo.svelte';
 	import { t, loading, locale } from '../lib/translations';
+	import SvelteSeo from 'svelte-seo';
 
 	export let data;
 </script>
+
+<SvelteSeo
+	title="Uncle John's Band"
+	description="Jamming since 2022"
+	openGraph={{
+		title: "Uncle John's Band",
+		description: "Jamming since 2022",
+		url: `https://unclejohnsband.xyz`,
+		type: 'website',
+		images: [
+			{
+				url: 'og.webp',
+				width: 850,
+				height: 650,
+				alt: 'band'
+			}
+		]
+	}}
+/>
 
 {#if $loading}
 	<p>wait</p>
@@ -168,8 +188,15 @@
 <style lang="scss">
 	container {
 		display: block;
-		max-width: 1600px;
+		max-width: 1250px;
 		margin: auto;
+		padding: 0 2em;
+		@media screen and (max-width: 900px) {
+			padding: 0 1em;
+		}
+		@media screen and (max-width: 600px) {
+			padding: 0 0em;
+		}
 	}
 	.bg {
 		/* position: absolute; */
@@ -211,7 +238,7 @@
 	}
 
 	.nav {
-		margin: 5em 5em 0;
+		margin: 5em 0em 0;
 		color: black;
 		display: flex;
 		flex-direction: row;
@@ -221,26 +248,13 @@
 		padding: 0;
 		height: 100%;
 		position: relative;
-		width: 100%;
 
-		@media screen and (max-width: 900px) {
-			flex-direction: column;
-			margin: 2em;
-		}
 		.title {
-			@media screen and (max-width: 900px) {
-				align-self: center;
-			}
 			p {
 				margin: 0 0 0.5em 2em;
 				opacity: 0.5;
 				word-wrap: break-spaces;
 				white-space: normal;
-				@media screen and (max-width: 900px) {
-					max-width: 300px;
-					text-align: center;
-					margin: 0 auto;
-				}
 			}
 		}
 		p {
@@ -248,13 +262,44 @@
 			margin: 0;
 			white-space: nowrap;
 		}
+		@media screen and (max-width: 900px) {
+			flex-direction: column;
+			margin: 2em 0;
+			.title {
+				align-self: center;
+				margin: 0;
+				p {
+					max-width: 300px;
+					text-align: center;
+					margin: 0 auto;
+				}
+				h1 {
+					font-size: 3em;
+					margin-block-start: 0;
+					margin: 0;
+				}
+			}
+			.line {
+				margin: 0 2em;
+			}
+		}
+
+		@media screen and (max-width: 600px) {
+			.title {
+				h1 {
+					font-size: 2.3em;
+					margin-block-start: 0;
+					margin: 0;
+				}
+			}
+		}
 
 		.language {
 			display: flex;
 			@media screen and (max-width: 900px) {
 				position: absolute;
 				top: -20px;
-				right: -20px;
+				right: 20px;
 			}
 		}
 		.members {
@@ -270,13 +315,6 @@
 			z-index: 2;
 			position: relative;
 			white-space: nowrap;
-
-			@media screen and (max-width: 900px) {
-				font-size: 3em;
-			}
-			@media screen and (max-width: 600px) {
-				font-size: 2.5em;
-			}
 		}
 		a {
 			font-size: 1.5em;
@@ -292,11 +330,14 @@
 		grid-template-rows: auto auto auto auto;
 		min-height: inherit;
 		position: relative;
-		border-left: 1px solid rgb(37, 36, 36);
-		border-right: 1px solid rgb(44, 43, 43);
+		margin: 0.2em 0;
+		/* border-left: 1px solid rgb(37, 36, 36);
+		border-right: 1px solid rgb(44, 43, 43); */
 
 		@media screen and (max-width: 900px) {
+			flex-direction: column;
 			width: 100%;
+			margin: 0.2em 0em;
 		}
 		&:after {
 			content: "There's purple in the sky tonight - And a rain rising from below";
@@ -320,12 +361,6 @@
 			@media screen and (max-width: 900px) {
 				display: none;
 			}
-		}
-		margin: 0.2em 5em;
-
-		@media screen and (max-width: 900px) {
-			flex-direction: column;
-			margin: 0.2em 1em;
 		}
 	}
 
