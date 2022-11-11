@@ -420,7 +420,7 @@
 			z-index: -1;
 			position: relative;
 			background-color: rgb(44, 38, 38);
-			background-image: url('dark-tire.png');
+			background-image: url('/dark-tire.png');
 		}
 		.text-divider {
 			grid-column: 1 / 4;
@@ -438,7 +438,7 @@
 			transform: rotateZ(-0.5deg) rotateX(2deg);
 			z-index: -1;
 			background-color: rgb(44, 38, 38);
-			background-image: url('dark-tire.png');
+			background-image: url('/dark-tire.png');
 			p {
 				margin: 0;
 			}
@@ -468,7 +468,7 @@
 			color: rgb(244, 235, 235);
 			position: relative;
 			background-color: rgb(44, 38, 38);
-			background-image: url('dark-tire.png');
+			background-image: url('/dark-tire.png');
 			@media screen and (max-width: 900px) {
 				width: 100%;
 				height: fit-content;
@@ -482,7 +482,7 @@
 			grid-column: 1 / 4;
 			color: white;
 			position: relative;
-			background: url('noise.png');
+			background: url('/noise.png');
 			/* background-color: #030202; */
 			@media screen and (max-width: 900px) {
 				height: auto;
@@ -504,7 +504,7 @@
 			grid-row: 7;
 			grid-column: 2 / 4;
 			background-color: rgb(44, 38, 38);
-			background-image: url('dark-tire.png');
+			background-image: url('/dark-tire.png');
 			text-align: center;
 			img {
 				width: 80px;
