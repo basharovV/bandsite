@@ -47,7 +47,7 @@
 		<div class="sections">
 			<div class="grid">
 				<!-- <img class="img-1" src="band-media/calling.webp" /> -->
-				<video src="band-media/walking-in-ragtime-outro.mp4#t=0.01" preload="metadata" controls poster="/calling.webp" async />
+				<video src="band-media/walking-in-ragtime-outro.mp4#t=0.01" preload="metadata" controls poster="/band-media/calling.webp" async />
 				<img class="img-2" src="band-media/flower-power.webp" />
 				<img class="img-3" src="band-media/studio-1.webp" />
 
@@ -81,7 +81,6 @@
 					<p>{$t('home.booking')} ☞ elpatostudios@protonmail.com</p>
 					<a href="https://instagram.com/unclejohns.band">instagram.com/unclejohns.band</a>
 					<br />
-					<small>© El Pato Records</small>
 				</section>
 
 				<div class="video">
@@ -98,7 +97,7 @@
 					<small>{$t('home.band.keys')}, {$t('home.band.vocal')}</small>
 					<p>Carlos Flores</p>
 					<small>{$t('home.band.bass')}</small>
-					<p>Olmo</p>
+					<p>Olmo Sanchez Vazquez</p>
 					<small>{$t('home.band.drums')}</small>
 				</section>
 
@@ -415,7 +414,8 @@
 		video {
 			grid-row: 1 / 3;
 			grid-column: 1;
-			background-color: #030202;
+			background-image: url('/dark-tire.png');
+			/* background-color: #030202; */
 			width: 100%;
 			height: 100%;
 			mask-border-source: url('/rect-clip.svg');
