@@ -78,7 +78,7 @@
 				</section>
 
 				<section class="contact">
-					<p>{$t('home.booking')} ☞ elpatostudios@protonmail.com</p>
+					<p>{$t('home.booking')} ☞ contact@elpatorecords.com</p>
 					<a href="https://instagram.com/unclejohns.band">instagram.com/unclejohns.band</a>
 					<br />
 				</section>
@@ -402,7 +402,7 @@
 			flex-direction: row;
 			flex-wrap: wrap;
 
-			.img-2 {
+			.img-3 {
 				display: none;
 			}
 
