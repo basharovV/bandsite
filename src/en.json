@@ -9,7 +9,7 @@
 	},
 	"booking": "booking",
 	"band": {
-		"title": "the band is:",
+		"title": "the band:",
 		"guitar": "guitar",
 		"vocal": "vocal",
 		"bass": "bass",
@@ -18,5 +18,6 @@
 	},
 	"elpato": {
 		"description": "rehearsals, jams, outtakes from the studio"
-	}
+	},
+	"rehearsals": "we record our rehearsals"
 }

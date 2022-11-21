@@ -11,7 +11,7 @@
 	description="Jamming since 2022"
 	openGraph={{
 		title: "Uncle John's Band",
-		description: "Jamming since 2022",
+		description: 'Jamming since 2022',
 		url: `https://unclejohnsband.xyz`,
 		type: 'website',
 		images: [
@@ -29,6 +29,8 @@
 	<p>wait</p>
 {:else}
 	<container>
+		<small class="date">{data.today}</small>
+
 		<div class="nav">
 			<div class="title">
 				<h1>Uncle John's Band</h1>
@@ -47,9 +49,24 @@
 		<div class="sections">
 			<div class="grid">
 				<!-- <img class="img-1" src="band-media/calling.webp" /> -->
-				<video src="band-media/walking-in-ragtime-outro.mp4#t=0.01" preload="metadata" controls poster="/band-media/calling.webp" async />
-				<img class="img-2" src="band-media/flower-power.webp" />
-				<img class="img-3" src="band-media/studio-1.webp" />
+				<video
+					src="band-media/walking-in-ragtime-outro.mp4#t=0.01"
+					preload="metadata"
+					controls
+					poster="/band-media/calling.webp"
+					async
+				/>
+				<!-- <img class="img-2" src="band-media/flower-power.webp" /> -->
+
+				<div class="video">
+					<YoutubeVideo
+						videoId="LXFqTxhzIf0"
+						platform="yt"
+						thumbnail={data.videos['LXFqTxhzIf0']?.thumbnail}
+						title={data.videos['LXFqTxhzIf0']?.title}
+					/>
+				</div>
+				<!-- <img class="img-3" src="band-media/studio-1.webp" /> -->
 
 				<div class="text-divider">
 					<p>people come, people go</p>
@@ -83,22 +100,51 @@
 					<br />
 				</section>
 
+				<div class="text-divider">
+					<p>There's a problem out there, somewhere</p>
+					<div class="page-divider" />
+					<p>And we pretend like it just don't exist</p>
+					<div class="page-divider" />
+					<p>You know exactly what I'm talking about</p>
+					<div class="page-divider" />
+					<p>I'm talking about this</p>
+				</div>
+				<div class="videos-info">
+					<h2>{$t('home.rehearsals')}⌟</h2>
+				</div>
 				<div class="video">
-					<YoutubeVideo videoId="3xOD2pT4xBQ" platform="yt" />
+					<YoutubeVideo
+						videoId="3xOD2pT4xBQ"
+						platform="yt"
+						thumbnail={data.videos['3xOD2pT4xBQ']?.thumbnail}
+						title={data.videos['3xOD2pT4xBQ']?.title}
+					/>
 				</div>
 
-				<section class="members">
-					<h2>{$t('home.band.title')}</h2>
-					<p>Michael Kirkland</p>
-					<small>{$t('home.band.guitar')}, {$t('home.band.vocal')}</small>
-					<p>Rafa Crossa</p>
-					<small>{$t('home.band.guitar')}, {$t('home.band.vocal')}</small>
-					<p>Slav Basharov</p>
-					<small>{$t('home.band.keys')}, {$t('home.band.vocal')}</small>
-					<p>Carlos Flores</p>
-					<small>{$t('home.band.bass')}</small>
-					<p>Olmo Sanchez Vazquez</p>
-					<small>{$t('home.band.drums')}</small>
+				<div class="video">
+					<YoutubeVideo
+						videoId="wemrSTU7fYA"
+						platform="yt"
+						thumbnail={data.videos['wemrSTU7fYA']?.thumbnail}
+						title={data.videos['wemrSTU7fYA']?.title}
+					/>
+				</div>
+
+				<div class="video">
+					<YoutubeVideo
+						videoId="ET1eQCj6LQQ"
+						platform="yt"
+						thumbnail={data.videos['ET1eQCj6LQQ']?.thumbnail}
+						title={data.videos['ET1eQCj6LQQ']?.title}
+					/>
+				</div>
+
+				<section class="rehearsals">
+					<img src="el-pato-records.png" />
+					<a href="https://www.youtube.com/channel/UCy_39NlQINm-Nt_F5vR3deA"
+						><h2>☞ El Pato Records</h2></a
+					>
+					<h1>+ {$t('home.elpato.description')}</h1>
 				</section>
 
 				<div class="text-divider">
@@ -111,16 +157,9 @@
 					<p>I'm talking about this</p>
 				</div>
 
-				<div class="video-2">
-					<YoutubeVideo videoId="wemrSTU7fYA" platform="yt" />
-				</div>
-
-				<section class="rehearsals">
-					<img src="el-pato-records.png" />
-					<a href="https://www.youtube.com/channel/UCy_39NlQINm-Nt_F5vR3deA"
-						><h2>☞ El Pato Records</h2></a
-					>
-					<h1>+ {$t('home.elpato.description')}</h1>
+				<section class="members">
+					<h1>{$t('home.band.title')}</h1>
+					<img src="reaper.png" />
 				</section>
 
 				<!-- 
@@ -236,7 +275,19 @@
 		background-color: black;
 		width: 100%;
 	}
-
+	.date {
+		position: absolute;
+		top: 2em;
+		right: 3em;
+		width: fit-content;
+		margin: 0 auto;
+		opacity: 0.3;
+		@media screen and (max-width: 900px) {
+			top: 1.4em;
+			right: 0em;
+			left: 0em;
+		}
+	}
 	.nav {
 		margin: 5em 0em 0;
 		color: black;
@@ -301,10 +352,6 @@
 				top: -20px;
 				right: 20px;
 			}
-		}
-		.members {
-			display: flex;
-			gap: 1em;
 		}
 		/* background-color: rgb(30, 29, 28); */
 		/* border: 2px dashed rgba(255, 255, 255, 0.126); */
@@ -387,12 +434,12 @@
 		justify-self: flex-end;
 		position: relative;
 		/* border: 2px solid rgb(228, 227, 221); */
-		filter: sepia(0.1);
+		/* filter: sepia(0.1); */
 		grid-column: 1 / 5;
 		gap: 5px;
 		grid-row: 1;
 		display: grid;
-		grid-template-columns: minmax(60%, 700px) 1fr 1fr;
+		grid-template-columns: repeat(8, 1fr);
 		grid-template-rows: 180px 1fr auto;
 		z-index: 1;
 		width: 100%;
@@ -413,7 +460,7 @@
 
 		video {
 			grid-row: 1 / 3;
-			grid-column: 1;
+			grid-column: span 4;
 			background-image: url('/dark-tire.png');
 			/* background-color: #030202; */
 			width: 100%;
@@ -450,13 +497,13 @@
 
 		.img-2 {
 			grid-row: 1;
-			grid-column: 2 / 4;
+			grid-column: 6 / 9;
 			object-fit: cover;
 		}
 
 		.img-3 {
 			grid-row: 2;
-			grid-column: 2 / 4;
+			grid-column: 6 / 9;
 			object-fit: cover;
 		}
 		.img-4 {
@@ -465,7 +512,7 @@
 		}
 		.dates {
 			grid-row: 4;
-			grid-column: 1 / 3;
+			grid-column: 1 / 6;
 			color: rgb(255, 255, 255);
 			transform: rotateZ(0.35deg) rotateX(0.5deg);
 			z-index: -1;
@@ -474,14 +521,14 @@
 			background-image: url('/dark-tire.png');
 		}
 		.text-divider {
-			grid-column: 1 / 4;
+			grid-column: 1 / 9;
 			@media screen and (max-width: 900px) {
 				display: none;
 			}
 		}
 		.contact {
 			grid-row: 4;
-			grid-column: 3 / 4;
+			grid-column: 6 / 9;
 			color: rgb(244, 235, 235);
 			/* background-color: rgb(20, 10, 10); */
 			position: relative;
@@ -494,38 +541,103 @@
 				margin: 0;
 			}
 		}
+		.videos-info {
+			grid-column: span 8;
+			display: flex;
+			align-items: center;
+			justify-content: left;
+			color: rgb(44, 38, 38);
+			padding: 0;
+			/* background-image: url('/dark-tire.png'); */
+			width: 100%;
+			@keyframes recording {
+				0% {
+					color: white;
+				}
+				50% {
+					color: red;
+				}
+				100% {
+					color: white;
+				}
+			}
+			h2 {
+				width: fit-content;
+				margin: 0.5em 0;
+				/* color: rgb(123, 106, 106); */
+				/* border-bottom: 2px dashed rgb(171, 154, 154); */
+				&::before {
+					content: '•';
+					left: -10px;
+					top: 2px;
+					position: relative;
+					color: red;
+					animation: recording 0.95s infinite forwards cubic-bezier(0.075, 0.82, 0.165, 1);
+				}
+			}
+			img {
+				margin-top: 1.5em;
+				width: 100%;
+				height: auto;
+				filter: sepia(0.3);
+			}
+		}
 		.video {
-			grid-row: 6;
-			grid-column: 1;
+			mask-border-source: url('/rect-clip.svg');
+			mask-border-slice: 10%;
+			-webkit-mask-box-image-source: url('/rect-clip.svg');
+			&:nth-of-type(1) {
+				grid-row: 1 / 3;
+			}
+			grid-column: span 4;
 			height: 100%;
 			@media screen and (max-width: 900px) {
 				height: auto;
 				width: 100%;
 			}
 		}
-		.video-2 {
-			grid-row: 7;
-			grid-column: 1;
+
+		.video-3 {
+			grid-column: span 5;
 			height: 100%;
 			@media screen and (max-width: 900px) {
 				height: auto;
 				width: 100%;
 			}
 		}
+
 		.members {
-			height: 100%;
-			grid-row: 6;
-			grid-column: 2 / 4;
+			grid-column: span 8;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 1em;
+			padding: 0;
 			color: rgb(244, 235, 235);
 			position: relative;
 			background-color: rgb(44, 38, 38);
 			background-image: url('/dark-tire.png');
+			overflow: hidden;
+
+			img {
+				height: auto;
+				width: auto;
+				object-fit: contain;
+			}
 			@media screen and (max-width: 900px) {
 				width: 100%;
 				height: fit-content;
+				img {
+					height: auto;
+					width: 100%;
+					object-fit: contain;
+				}
 			}
 			small {
 				opacity: 0.7;
+			}
+			h1 {
+				width: fit-content;
 			}
 		}
 		.poem {
@@ -552,8 +664,7 @@
 			}
 		}
 		.rehearsals {
-			grid-row: 7;
-			grid-column: 2 / 4;
+			grid-column: span 4;
 			background-color: rgb(44, 38, 38);
 			background-image: url('/dark-tire.png');
 			text-align: center;
@@ -562,6 +673,14 @@
 				height: auto;
 				margin: 2em auto;
 				animation: rotate 4s infinite forwards linear;
+			}
+			h2 {
+				margin-top: 0;
+			}
+
+			h1 {
+				margin-top: 0.4em;
+				font-size: 1.8em;
 			}
 		}
 	}

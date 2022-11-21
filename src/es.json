@@ -9,7 +9,7 @@
 	},
 	"booking": "booking",
 	"band": {
-		"title": "el grupo",
+		"title": "el grupo:",
 		"guitar": "guitarra",
 		"vocal": "vocal",
 		"bass": "bajo",
@@ -18,5 +18,6 @@
 	},
 	"elpato": {
 		"description": "ensayos, jams, grabaciones del estudio"
-	}
+	},
+	"rehearsals": "grabamos nuestros ensayos"
 }

@@ -6,7 +6,37 @@ import dayjs from 'dayjs';
 dayjs.extend(customParseFormat);
 import shows from '../data/shows.json';
 
-export const load: LayoutLoad = async ({ url }) => {
+const YOUTUBE_VIDEOS = ['3xOD2pT4xBQ', 'ET1eQCj6LQQ', 'LXFqTxhzIf0', 'wemrSTU7fYA'];
+
+async function getYouTubeTitle(fetch, videoId) {
+	return await fetch(
+		`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&feature=emb_logo&format=json`
+	)
+		.then((response) => response.json())
+		.then((response) => {
+			console.log('response', response);
+			if (response) {
+				return {
+					title: response.title,
+					thumbnail: `/thumbnails/${videoId}.jpg`
+				};
+				// thumbnail = response.thumbnail_url.replace('hqdefault', 'maxresdefault');
+			}
+		});
+}
+
+async function getAllYouTubeVideos(fetch) {
+	return await YOUTUBE_VIDEOS.reduce(async (obj, current) => {
+		console.log('obj', obj);
+		console.log('current', current);
+		const objResolved = await obj;
+		objResolved[current] = await getYouTubeTitle(fetch, current);
+		console.log('objcurrent', obj[current]);
+		return Promise.resolve(objResolved);;
+	}, Promise.resolve([]));
+}
+
+export const load: LayoutLoad = async ({ fetch, url }) => {
 	const { pathname } = url;
 
 	const defaultLocale = 'en'; // get from cookie, user session, ...
@@ -21,8 +51,23 @@ export const load: LayoutLoad = async ({ url }) => {
 	}));
 
 	console.log('shows', transformedShows);
-
+	let videos = {};
+	
+	try {
+		videos = await getAllYouTubeVideos(fetch);
+		console.log('videos', videos);
+	}
+	catch (err) {
+		console.error(err);
+		videos = YOUTUBE_VIDEOS.reduce((obj, current) => {
+			obj[current] = {
+			}
+			return obj;
+		}, YOUTUBE_VIDEOS)
+	}
 	return {
-		shows: transformedShows
+		shows: transformedShows,
+		today: dayjs().format('ddd, D MMM YYYY'),
+		videos
 	};
 };
