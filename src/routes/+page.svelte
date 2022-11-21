@@ -623,6 +623,7 @@
 				height: auto;
 				width: auto;
 				object-fit: contain;
+				max-width: 500px;
 			}
 			@media screen and (max-width: 900px) {
 				width: 100%;
