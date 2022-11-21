@@ -2,6 +2,7 @@
 	import YoutubeVideo from '../components/YoutubeVideo.svelte';
 	import { t, loading, locale } from '../lib/translations';
 	import SvelteSeo from 'svelte-seo';
+	import InstagramIcon from '../icons/InstagramIcon.svelte';
 
 	export let data;
 </script>
@@ -49,16 +50,8 @@
 		<div class="sections">
 			<div class="grid">
 				<!-- <img class="img-1" src="band-media/calling.webp" /> -->
-				<video
-					src="band-media/walking-in-ragtime-outro.mp4#t=0.01"
-					preload="metadata"
-					controls
-					poster="/band-media/calling.webp"
-					async
-				/>
-				<!-- <img class="img-2" src="band-media/flower-power.webp" /> -->
 
-				<div class="video">
+				<div class="video big">
 					<YoutubeVideo
 						videoId="LXFqTxhzIf0"
 						platform="yt"
@@ -66,6 +59,34 @@
 						title={data.videos['LXFqTxhzIf0']?.title}
 					/>
 				</div>
+
+				<div class="video">
+					<YoutubeVideo
+						videoId="EQ2LuZwFD_s"
+						platform="yt"
+						thumbnail={data.videos['EQ2LuZwFD_s']?.thumbnail}
+						title={data.videos['EQ2LuZwFD_s']?.title}
+					/>
+				</div>
+
+				<!-- <video
+					src="band-media/walking-in-ragtime-outro.mp4#t=0.01"
+					preload="metadata"
+					controls
+					poster="/band-media/calling.webp"
+					async
+				/> -->
+				<!-- <img class="img-2" src="band-media/flower-power.webp" /> -->
+
+				<div class="video">
+					<YoutubeVideo
+						videoId="MjXHpK2UzSU"
+						platform="yt"
+						thumbnail={data.videos['MjXHpK2UzSU']?.thumbnail}
+						title={data.videos['MjXHpK2UzSU']?.title}
+					/>
+				</div>
+
 				<!-- <img class="img-3" src="band-media/studio-1.webp" /> -->
 
 				<div class="text-divider">
@@ -96,19 +117,17 @@
 
 				<section class="contact">
 					<p>{$t('home.booking')} ☞ contact@elpatorecords.com</p>
-					<a href="https://instagram.com/unclejohns.band">instagram.com/unclejohns.band</a>
+					<a href="https://instagram.com/unclejohns.band">
+						<span>
+							<div class="instagram-icon">
+								<InstagramIcon />
+							</div>
+							instagram.com/unclejohns.band
+						</span>
+					</a>
 					<br />
 				</section>
 
-				<div class="text-divider">
-					<p>There's a problem out there, somewhere</p>
-					<div class="page-divider" />
-					<p>And we pretend like it just don't exist</p>
-					<div class="page-divider" />
-					<p>You know exactly what I'm talking about</p>
-					<div class="page-divider" />
-					<p>I'm talking about this</p>
-				</div>
 				<div class="videos-info">
 					<h2>{$t('home.rehearsals')}⌟</h2>
 				</div>
@@ -459,7 +478,6 @@
 		}
 
 		video {
-			grid-row: 1 / 3;
 			grid-column: span 4;
 			background-image: url('/dark-tire.png');
 			/* background-color: #030202; */
@@ -540,6 +558,18 @@
 			p {
 				margin: 0;
 			}
+			span {
+				margin-top: 0.5em;
+				display: inline-flex;
+				align-items: center;
+				gap: 10px;
+				div {
+					display: inline-flex;
+					align-items: center;
+					width: fit-content;
+					font-size: 2em;
+				}
+			}
 		}
 		.videos-info {
 			grid-column: span 8;
@@ -594,6 +624,9 @@
 			@media screen and (max-width: 900px) {
 				height: auto;
 				width: 100%;
+			}
+			&.big {
+				grid-column: span 8;
 			}
 		}
 

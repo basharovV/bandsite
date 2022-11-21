@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 dayjs.extend(customParseFormat);
 import shows from '../data/shows.json';
 
-const YOUTUBE_VIDEOS = ['3xOD2pT4xBQ', 'ET1eQCj6LQQ', 'LXFqTxhzIf0', 'wemrSTU7fYA'];
+const YOUTUBE_VIDEOS = ['3xOD2pT4xBQ', 'ET1eQCj6LQQ', 'LXFqTxhzIf0', 'wemrSTU7fYA', 'MjXHpK2UzSU', 'EQ2LuZwFD_s'];
 
 async function getYouTubeTitle(fetch, videoId) {
 	return await fetch(
@@ -32,7 +32,7 @@ async function getAllYouTubeVideos(fetch) {
 		const objResolved = await obj;
 		objResolved[current] = await getYouTubeTitle(fetch, current);
 		console.log('objcurrent', obj[current]);
-		return Promise.resolve(objResolved);;
+		return Promise.resolve(objResolved);
 	}, Promise.resolve([]));
 }
 
@@ -52,18 +52,16 @@ export const load: LayoutLoad = async ({ fetch, url }) => {
 
 	console.log('shows', transformedShows);
 	let videos = {};
-	
+
 	try {
 		videos = await getAllYouTubeVideos(fetch);
 		console.log('videos', videos);
-	}
-	catch (err) {
+	} catch (err) {
 		console.error(err);
 		videos = YOUTUBE_VIDEOS.reduce((obj, current) => {
-			obj[current] = {
-			}
+			obj[current] = {};
 			return obj;
-		}, YOUTUBE_VIDEOS)
+		}, YOUTUBE_VIDEOS);
 	}
 	return {
 		shows: transformedShows,
