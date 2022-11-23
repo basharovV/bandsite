@@ -108,8 +108,20 @@
 						{#each data.shows as show}
 							<tr>
 								<td class:passed={show.passed}>{show.date}</td>
-								<td>{show.location}</td>
-								<td>{show.tickets}</td>
+								<td>
+									{#if show.link}
+										<a href={show.link}>{show.location}</a>
+									{:else}
+										{show.location}
+									{/if}
+								</td>
+								<td>
+									{#if show.link}
+										<a href={show.link}>{show.tickets}</a>
+									{:else}
+										{show.tickets}
+									{/if}
+								</td>
 							</tr>
 						{/each}
 					</table>
@@ -535,7 +547,7 @@
 			transform: rotateZ(0.35deg) rotateX(0.5deg);
 			z-index: -1;
 			position: relative;
-			background-color: rgb(44, 38, 38);
+			background-color: #2c2626;
 			background-image: url('/dark-tire.png');
 		}
 		.text-divider {
