@@ -53,15 +53,6 @@
 
 				<div class="video big">
 					<YoutubeVideo
-						videoId="LXFqTxhzIf0"
-						platform="yt"
-						thumbnail={data.videos['LXFqTxhzIf0']?.thumbnail}
-						title={data.videos['LXFqTxhzIf0']?.title}
-					/>
-				</div>
-
-				<div class="video">
-					<YoutubeVideo
 						videoId="EQ2LuZwFD_s"
 						platform="yt"
 						thumbnail={data.videos['EQ2LuZwFD_s']?.thumbnail}
@@ -87,6 +78,14 @@
 					/>
 				</div>
 
+				<div class="video">
+					<YoutubeVideo
+						videoId="LXFqTxhzIf0"
+						platform="yt"
+						thumbnail={data.videos['LXFqTxhzIf0']?.thumbnail}
+						title={data.videos['LXFqTxhzIf0']?.title}
+					/>
+				</div>
 				<!-- <img class="img-3" src="band-media/studio-1.webp" /> -->
 
 				<div class="text-divider">
@@ -134,7 +133,7 @@
 							<div class="instagram-icon">
 								<InstagramIcon />
 							</div>
-							instagram.com/unclejohns.band
+							unclejohns.band
 						</span>
 					</a>
 					<br />
@@ -252,7 +251,10 @@
 			</div>
 		</div></container
 	>
-	<footer>© Uncle John's Band 2022</footer>
+	<footer>
+		<img src="/logo.png"/>
+		<p>© Uncle John's Band 2022</p>
+	</footer>
 {/if}
 
 <style lang="scss">
@@ -471,14 +473,22 @@
 		grid-row: 1;
 		display: grid;
 		grid-template-columns: repeat(8, 1fr);
-		grid-template-rows: 180px 1fr auto;
+		/* grid-template-rows: 180px 1fr auto; */
+
+		grid-template-rows: auto;
 		z-index: 1;
 		width: 100%;
 
 		@media screen and (max-width: 900px) {
-			display: flex;
+			display: grid;
+			grid-template-rows: auto;
 			flex-direction: row;
 			flex-wrap: wrap;
+
+			> * {
+				grid-column: span 8 !important;
+				grid-row: auto !important;
+			}
 
 			.img-3 {
 				display: none;
@@ -628,17 +638,19 @@
 			mask-border-source: url('/rect-clip.svg');
 			mask-border-slice: 10%;
 			-webkit-mask-box-image-source: url('/rect-clip.svg');
-			&:nth-of-type(1) {
-				grid-row: 1 / 3;
-			}
 			grid-column: span 4;
 			height: 100%;
+
+			&:nth-of-type(3) {
+				grid-column: span 8;
+			}
 			@media screen and (max-width: 900px) {
 				height: auto;
 				width: 100%;
-			}
-			&.big {
-				grid-column: span 8;
+
+				&.big {
+					grid-row: 1;
+				}
 			}
 		}
 
@@ -757,5 +769,8 @@
 	footer {
 		padding: 2em;
 		text-align: center;
+		img {
+			max-width: min(130px, 50%);
+		}
 	}
 </style>
