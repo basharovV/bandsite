@@ -16,6 +16,10 @@
 		"keys": "teclados",
 		"drums": "batería"
 	},
+	"bio": {
+		"title": "Unos frikis forman una jam band",
+		"body": "de Andalucía viene un sonido nuevo pero familiar, caracterizado por canciones sinceras y jams eclecticos."
+	},
 	"elpato": {
 		"description": "ensayos, jams, grabaciones del estudio"
 	},

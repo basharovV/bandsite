@@ -51,7 +51,7 @@
 			<div class="grid">
 				<!-- <img class="img-1" src="band-media/calling.webp" /> -->
 
-				<div class="video big">
+				<div class="video">
 					<YoutubeVideo
 						videoId="EQ2LuZwFD_s"
 						platform="yt"
@@ -59,7 +59,6 @@
 						title={data.videos['EQ2LuZwFD_s']?.title}
 					/>
 				</div>
-
 				<!-- <video
 					src="band-media/walking-in-ragtime-outro.mp4#t=0.01"
 					preload="metadata"
@@ -78,6 +77,14 @@
 					/>
 				</div>
 
+				<div class="bio">
+					<h3>
+						❂ {$t('home.bio.title')}
+					</h3>
+					<p><b> {$t('home.bio.body')}
+						</b>
+					</p>
+				</div>
 				<div class="video">
 					<YoutubeVideo
 						videoId="LXFqTxhzIf0"
@@ -86,6 +93,15 @@
 						title={data.videos['LXFqTxhzIf0']?.title}
 					/>
 				</div>
+
+				<!-- <div class="video">
+					<YoutubeVideo
+						videoId="25GFtCvNC_4"
+						platform="yt"
+						thumbnail={data.videos['25GFtCvNC_4']?.thumbnail}
+						title={data.videos['25GFtCvNC_4']?.title}
+					/>
+				</div> -->
 				<!-- <img class="img-3" src="band-media/studio-1.webp" /> -->
 
 				<div class="text-divider">
@@ -252,7 +268,7 @@
 		</div></container
 	>
 	<footer>
-		<img src="/logo.png"/>
+		<img src="/logo.png" />
 		<p>© Uncle John's Band 2022</p>
 	</footer>
 {/if}
@@ -496,6 +512,19 @@
 
 			section {
 				height: fit-content;
+			}
+		}
+
+		.bio {
+			grid-column: span 4;
+			padding: 0 1em 1em;
+			h3 {
+				margin: 1em 0;
+				font-family: 'Zina';
+				font-weight: bold;
+			}
+			p {
+				margin: 0;
 			}
 		}
 

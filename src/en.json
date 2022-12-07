@@ -16,6 +16,10 @@
 		"keys": "keys",
 		"drums": "drums"
 	},
+	"bio": {
+		"title": "A bunch of nerds formed a band out of the love for jamming.",
+		"body": "from Andalucia, Spain, the band brings a new yet familiar sound, with heartfelt songwriting and eclectic improvisations."
+	},
 	"elpato": {
 		"description": "rehearsals, jams, outtakes from the studio"
 	},
