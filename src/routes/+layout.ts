@@ -5,9 +5,9 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 import dayjs from 'dayjs';
 dayjs.extend(customParseFormat);
 import shows from '../data/shows.json';
+import YOUTUBE_VIDEOS from '../data/videos.json';
 
-const YOUTUBE_VIDEOS = ['3xOD2pT4xBQ', 'ET1eQCj6LQQ', 'LXFqTxhzIf0', 'wemrSTU7fYA', 'MjXHpK2UzSU', 'EQ2LuZwFD_s'];
-
+// TODO remove if not gonna be used? All data is local until embed is loaded
 async function getYouTubeTitle(fetch, videoId) {
 	return await fetch(
 		`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&feature=emb_logo&format=json`
@@ -18,7 +18,7 @@ async function getYouTubeTitle(fetch, videoId) {
 			if (response) {
 				return {
 					title: response.title,
-					thumbnail: `/thumbnails/${videoId}.jpg`
+					thumbnail: `/thumbnails/${videoId}.webp`
 				};
 				// thumbnail = response.thumbnail_url.replace('hqdefault', 'maxresdefault');
 			}
@@ -30,10 +30,16 @@ async function getAllYouTubeVideos(fetch) {
 		console.log('obj', obj);
 		console.log('current', current);
 		const objResolved = await obj;
-		objResolved[current] = await getYouTubeTitle(fetch, current);
-		console.log('objcurrent', obj[current]);
+
+		// Add title
+		objResolved[current.id] = {
+			...current,
+			thumbnail: `/thumbnails/${current.id}.webp`
+		};
+
+		console.log('objcurrent', obj[current.id]);
 		return Promise.resolve(objResolved);
-	}, Promise.resolve([]));
+	}, Promise.resolve({}));
 }
 
 export const load: LayoutLoad = async ({ fetch, url }) => {
@@ -59,7 +65,7 @@ export const load: LayoutLoad = async ({ fetch, url }) => {
 	} catch (err) {
 		console.error(err);
 		videos = YOUTUBE_VIDEOS.reduce((obj, current) => {
-			obj[current] = {};
+			obj[current.id] = {};
 			return obj;
 		}, YOUTUBE_VIDEOS);
 	}

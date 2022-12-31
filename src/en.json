@@ -1,5 +1,5 @@
 {
-	"tagline": "jamming since 2022",
+	"tagline": "since 2022",
     "subtitle": "introduce themselves through a digital medium",
 	"shows": {
 		"title": "shows",
@@ -21,6 +21,7 @@
 		"body": "from Andalucia, Spain, the band brings a new yet familiar sound, with heartfelt songwriting and eclectic improvisations."
 	},
 	"elpato": {
+		"link": "more on our YouTube channel",
 		"description": "rehearsals, jams, outtakes from the studio"
 	},
 	"rehearsals": "rehearsals"

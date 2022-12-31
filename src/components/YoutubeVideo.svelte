@@ -3,8 +3,8 @@
 	export let platform;
 	export let showTitle = true;
 
-	export let title;
-	export let thumbnail;
+	export let title = "Loading...";
+	export let thumbnail = "";
 
 	async function getVimeoThumbnail() {
 		await fetch(
@@ -36,12 +36,8 @@
 
 	let loadIframe = false;
 
-	if (typeof window !== 'undefined') {
-		if (platform === 'vimeo') {
-			getVimeoThumbnail();
-		} else if (platform === 'yt') {
-			getYouTubeTitle();
-		}
+	if (typeof window !== 'undefined' && platform === "yt" && thumbnail === undefined && title === undefined) {
+		getYouTubeTitle();
 	}
 </script>
 

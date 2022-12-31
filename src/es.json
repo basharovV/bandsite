@@ -1,5 +1,5 @@
 {
-	"tagline": "jameando desde 2022",
+	"tagline": "desde 2022",
     "subtitle": "se introducen a traves del medio digital",
 	"shows": {
 		"title": "conciertos",
@@ -17,10 +17,11 @@
 		"drums": "batería"
 	},
 	"bio": {
-		"title": "Unos frikis forman una jam band",
-		"body": "de Andalucía viene un sonido nuevo pero familiar, caracterizado por canciones sinceras y jams eclecticos."
+		"title": "Pandilla de frikis forman una jam band",
+		"body": "de Andalucía surge un sonido nuevo pero familiar, caracterizado por canciones sinceras y jams eclecticos."
 	},
 	"elpato": {
+		"link": "más videos en nuestro canal YouTube",
 		"description": "ensayos, jams, grabaciones del estudio"
 	},
 	"rehearsals": "ensayos"

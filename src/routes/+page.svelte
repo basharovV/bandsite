@@ -51,6 +51,23 @@
 			<div class="grid">
 				<!-- <img class="img-1" src="band-media/calling.webp" /> -->
 
+				<div class="bio">
+					<h3>
+						❂ {$t('home.bio.title')}
+					</h3>
+					<p><b> {$t('home.bio.body')} </b></p>
+				</div>
+
+				<div class="text-divider">
+					<p>There's a problem out there, somewhere</p>
+					<div class="page-divider" />
+					<p>And we pretend like it just don't exist</p>
+					<div class="page-divider" />
+					<p>You know exactly what I'm talking about</p>
+					<div class="page-divider" />
+					<p>I'm talking about this</p>
+				</div>
+
 				<div class="video">
 					<YoutubeVideo
 						videoId="EQ2LuZwFD_s"
@@ -74,23 +91,6 @@
 						platform="yt"
 						thumbnail={data.videos['MjXHpK2UzSU']?.thumbnail}
 						title={data.videos['MjXHpK2UzSU']?.title}
-					/>
-				</div>
-
-				<div class="bio">
-					<h3>
-						❂ {$t('home.bio.title')}
-					</h3>
-					<p><b> {$t('home.bio.body')}
-						</b>
-					</p>
-				</div>
-				<div class="video">
-					<YoutubeVideo
-						videoId="LXFqTxhzIf0"
-						platform="yt"
-						thumbnail={data.videos['LXFqTxhzIf0']?.thumbnail}
-						title={data.videos['LXFqTxhzIf0']?.title}
 					/>
 				</div>
 
@@ -155,9 +155,37 @@
 					<br />
 				</section>
 
+				<div class="video">
+					<YoutubeVideo
+						videoId="LXFqTxhzIf0"
+						platform="yt"
+						thumbnail={data.videos['LXFqTxhzIf0']?.thumbnail}
+						title={data.videos['LXFqTxhzIf0']?.title}
+					/>
+				</div>
+				<div class="video">
+					<YoutubeVideo
+						videoId="25GFtCvNC_4"
+						platform="yt"
+						thumbnail={data.videos['25GFtCvNC_4']?.thumbnail}
+						title={data.videos['25GFtCvNC_4']?.title}
+					/>
+				</div>
+
+				<div class="art" />
 				<div class="videos-info">
 					<h2>{$t('home.rehearsals')}⌟</h2>
 				</div>
+
+				<div class="video">
+					<YoutubeVideo
+						videoId="LhrZMKmF0WE"
+						platform="yt"
+						thumbnail={data.videos['LhrZMKmF0WE']?.thumbnail}
+						title={data.videos['LhrZMKmF0WE']?.title}
+					/>
+				</div>
+
 				<div class="video">
 					<YoutubeVideo
 						videoId="3xOD2pT4xBQ"
@@ -186,9 +214,9 @@
 				</div>
 
 				<section class="rehearsals">
-					<img src="el-pato-records.png" />
+					<!-- <img src="el-pato-records.png" /> -->
 					<a href="https://www.youtube.com/channel/UCy_39NlQINm-Nt_F5vR3deA"
-						><h2>☞ El Pato Records</h2></a
+						><h2>☞ {$t('home.elpato.link')}</h2></a
 					>
 					<h1>+ {$t('home.elpato.description')}</h1>
 				</section>
@@ -356,6 +384,9 @@
 				word-wrap: break-spaces;
 				white-space: normal;
 			}
+			h1 {
+				font-size: 3em;
+			}
 		}
 		p {
 			color: black;
@@ -516,15 +547,20 @@
 		}
 
 		.bio {
-			grid-column: span 4;
+			grid-column: span 8;
 			padding: 0 1em 1em;
+			text-align: center;
+			margin: 0 auto;
 			h3 {
-				margin: 1em 0;
+				margin: 1em auto;
 				font-family: 'Zina';
+				font-size: 2.5em;
+				max-width: 600px;
 				font-weight: bold;
 			}
 			p {
-				margin: 0;
+				margin: 0 auto;
+				max-width: 700px;
 			}
 		}
 
@@ -671,7 +707,7 @@
 			height: 100%;
 
 			&:nth-of-type(3) {
-				grid-column: span 8;
+				/* grid-column: span 8; */
 			}
 			@media screen and (max-width: 900px) {
 				height: auto;
@@ -751,9 +787,10 @@
 			}
 		}
 		.rehearsals {
-			grid-column: span 4;
-			background-color: rgb(44, 38, 38);
-			background-image: url('/dark-tire.png');
+			margin: 2em 0;
+			grid-column: span 8;
+			color: rgb(44, 38, 38);
+			/* background-image: url('/dark-tire.png'); */
 			text-align: center;
 			img {
 				width: 80px;
@@ -762,7 +799,7 @@
 				animation: rotate 4s infinite forwards linear;
 			}
 			h2 {
-				margin-top: 0;
+				margin: 0;
 			}
 
 			h1 {
