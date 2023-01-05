@@ -2,7 +2,11 @@ import type { LayoutLoad } from '../../.svelte-kit/types/src/routes/$types';
 import { locale, loadTranslations } from '$lib/translations';
 
 import customParseFormat from 'dayjs/plugin/customParseFormat';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
+
 import dayjs from 'dayjs';
+import 'dayjs/locale/es';
+dayjs.extend(advancedFormat);
 dayjs.extend(customParseFormat);
 import shows from '../data/shows.json';
 import YOUTUBE_VIDEOS from '../data/videos.json';
@@ -47,6 +51,7 @@ export const load: LayoutLoad = async ({ fetch, url }) => {
 
 	const defaultLocale = 'en'; // get from cookie, user session, ...
 	const initLocale = url.searchParams.get('lang') || locale.get() || defaultLocale; // set default if no locale already set
+	dayjs.locale(initLocale);
 
 	await loadTranslations(initLocale, pathname); // keep this just before the `return`
 
@@ -71,7 +76,7 @@ export const load: LayoutLoad = async ({ fetch, url }) => {
 	}
 	return {
 		shows: transformedShows,
-		today: dayjs().format('ddd, D MMM YYYY'),
+		today: dayjs().format('dddd, Do MMMM YYYY'),
 		videos
 	};
 };

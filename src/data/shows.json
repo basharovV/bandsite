@@ -6,10 +6,21 @@
 			"tickets": "Free"
 		},
 		{
+			"date": "03-12-2022",
+			"location": "Groove Bar, Fuengirola",
+			"tickets": "Free"
+		},
+		{
 			"date": "28-01-2023",
 			"location": "Estudios Tarántula, Marbella",
 			"tickets": "5€",
 			"link": "https://estudiostarantula.com/eventos"
+		},
+		{
+			"date": "13-01-2023",
+			"location": "(unplugged) La Polivalente, Málaga",
+			"tickets": "5€ (door)",
+			"link": "https://www.lapolivalente.com/evento/el-pato-yoan-3/"
 		}
 	]
 }

@@ -3,6 +3,7 @@
 	import { t, loading, locale } from '../lib/translations';
 	import SvelteSeo from 'svelte-seo';
 	import InstagramIcon from '../icons/InstagramIcon.svelte';
+	import MailIcon from '../icons/MailIcon.svelte';
 
 	export let data;
 </script>
@@ -30,21 +31,22 @@
 	<p>wait</p>
 {:else}
 	<container>
-		<small class="date">{data.today}</small>
-
 		<div class="nav">
 			<div class="title">
 				<h1>Uncle John's Band</h1>
-				<p>{$t('home.subtitle')}</p>
+				<!-- <p>{$t('home.subtitle')}</p> -->
 			</div>
-			<div class="line" />
-			<p>{$t('home.tagline')}</p>
-			<div class="line" />
 			<div class="language">
 				<a href="?lang=en"> EN </a>
 				<p>/</p>
 				<a href="?lang=es">ES</a>
 			</div>
+		</div>
+
+		<div class="date-container">
+			<div class="line" />
+			<small class="date">{data.today}</small>
+			<div class="line" />
 		</div>
 
 		<div class="sections">
@@ -70,10 +72,10 @@
 
 				<div class="video">
 					<YoutubeVideo
-						videoId="EQ2LuZwFD_s"
+						videoId="F3K6e8yN_pg"
 						platform="yt"
-						thumbnail={data.videos['EQ2LuZwFD_s']?.thumbnail}
-						title={data.videos['EQ2LuZwFD_s']?.title}
+						thumbnail={data.videos['F3K6e8yN_pg']?.thumbnail}
+						title={data.videos['F3K6e8yN_pg']?.title}
 					/>
 				</div>
 				<!-- <video
@@ -122,7 +124,7 @@
 						<th>{$t('home.shows.tickets')}</th>
 						{#each data.shows as show}
 							<tr>
-								<td class:passed={show.passed}>{show.date}</td>
+								<td class="show-date" class:passed={show.passed}>{show.date}</td>
 								<td>
 									{#if show.link}
 										<a href={show.link}>{show.location}</a>
@@ -143,7 +145,15 @@
 				</section>
 
 				<section class="contact">
-					<p>{$t('home.booking')} ☞ contact@elpatorecords.com</p>
+					<a href="mailto:contact@elpatorecords.com">
+						<span>
+							<div class="mail-icon">
+								<MailIcon />
+							</div>
+							<p>contact@elpatorecords.com</p>
+						</span>
+					</a>
+
 					<a href="https://instagram.com/unclejohns.band">
 						<span>
 							<div class="instagram-icon">
@@ -352,17 +362,25 @@
 		background-color: black;
 		width: 100%;
 	}
-	.date {
-		position: absolute;
-		top: 2em;
-		right: 3em;
-		width: fit-content;
-		margin: 0 auto;
-		opacity: 0.3;
-		@media screen and (max-width: 900px) {
-			top: 1.4em;
-			right: 0em;
-			left: 0em;
+	.date-container {
+		padding: 0 1em;
+		.line {
+			margin: 0;
+			background-color: rgb(77, 70, 70);
+			height: 2px;
+		}
+
+		.date {
+			width: 100%;
+			margin: 0.5em auto;
+			display: block;
+			font-weight: bold;
+			text-align: center;
+			@media screen and (max-width: 900px) {
+				top: 1.4em;
+				right: 0em;
+				left: 0em;
+			}
 		}
 	}
 	.nav {
@@ -370,7 +388,7 @@
 		color: black;
 		display: flex;
 		flex-direction: row;
-		justify-content: space-around;
+		justify-content: center;
 		align-items: center;
 		text-align: left;
 		padding: 0;
@@ -385,6 +403,7 @@
 				white-space: normal;
 			}
 			h1 {
+				padding: 0;
 				font-size: 3em;
 			}
 		}
@@ -418,14 +437,16 @@
 		@media screen and (max-width: 600px) {
 			.title {
 				h1 {
-					font-size: 2.3em;
+					font-size: 2.5em;
 					margin-block-start: 0;
-					margin: 0;
+					margin: 0.5em 0 0 0;
 				}
 			}
 		}
 
 		.language {
+			position: absolute;
+			right: 1em;
 			display: flex;
 			@media screen and (max-width: 900px) {
 				position: absolute;
@@ -549,17 +570,17 @@
 		.bio {
 			grid-column: span 8;
 			padding: 0 1em 1em;
-			text-align: center;
-			margin: 0 auto;
+			text-align: left;
+			margin: 0;
 			h3 {
-				margin: 1em auto;
+				margin: 1em 0 0 0;
 				font-family: 'Zina';
-				font-size: 2.5em;
+				font-size: 2em;
 				max-width: 600px;
 				font-weight: bold;
 			}
 			p {
-				margin: 0 auto;
+				margin: 1em 0 0 0;
 				max-width: 700px;
 			}
 		}
@@ -624,6 +645,14 @@
 			position: relative;
 			background-color: #2c2626;
 			background-image: url('/dark-tire.png');
+
+			.show-date {
+				font-size: 0.8em;
+				white-space: nowrap;
+				@media screen and (max-width: 600px) {
+					white-space: normal;
+				}
+			}
 		}
 		.text-divider {
 			grid-column: 1 / 9;
@@ -735,6 +764,7 @@
 			align-items: center;
 			gap: 1em;
 			padding: 0;
+			padding-bottom: 10px;
 			color: rgb(244, 235, 235);
 			position: relative;
 			background-color: rgb(44, 38, 38);
