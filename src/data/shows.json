@@ -11,16 +11,17 @@
 			"tickets": "Free"
 		},
 		{
+			"date": "13-01-2023",
+			"location": "La Polivalente, Málaga",
+			"description": "acoustic trio - El Pato Yoan",
+			"tickets": "5€ (door)",
+			"link": "https://www.lapolivalente.com/evento/el-pato-yoan-3/"
+		},
+		{
 			"date": "28-01-2023",
 			"location": "Estudios Tarántula, Marbella",
 			"tickets": "5€",
 			"link": "https://estudiostarantula.com/eventos"
-		},
-		{
-			"date": "13-01-2023",
-			"location": "(unplugged) La Polivalente, Málaga",
-			"tickets": "5€ (door)",
-			"link": "https://www.lapolivalente.com/evento/el-pato-yoan-3/"
 		}
 	]
 }

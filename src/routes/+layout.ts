@@ -76,7 +76,7 @@ export const load: LayoutLoad = async ({ fetch, url }) => {
 	}
 	return {
 		shows: transformedShows,
-		today: dayjs().format('dddd, Do MMMM YYYY'),
+		today: dayjs().format(initLocale === 'es' ? 'dddd, D [de] MMMM YYYY' : 'dddd, Do MMMM YYYY'),
 		videos
 	};
 };

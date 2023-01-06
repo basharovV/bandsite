@@ -131,6 +131,10 @@
 									{:else}
 										{show.location}
 									{/if}
+									{#if show.description}
+										<br />
+										<small class="description">{show.description}</small>
+									{/if}
 								</td>
 								<td>
 									{#if show.link}
@@ -569,7 +573,7 @@
 
 		.bio {
 			grid-column: span 8;
-			padding: 0 1em 1em;
+			padding: 0 0 1em;
 			text-align: left;
 			margin: 0;
 			h3 {
@@ -649,9 +653,13 @@
 			.show-date {
 				font-size: 0.8em;
 				white-space: nowrap;
+				vertical-align: top;
 				@media screen and (max-width: 600px) {
 					white-space: normal;
 				}
+			}
+			.description {
+				opacity: 0.5;
 			}
 		}
 		.text-divider {
