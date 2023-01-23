@@ -191,7 +191,16 @@
 					<h2>{$t('home.rehearsals')}⌟</h2>
 				</div>
 
-				<div class="video">
+				<div class="video small">
+					<YoutubeVideo
+						videoId="xddr-mpKC-M"
+						platform="yt"
+						thumbnail={data.videos['xddr-mpKC-M']?.thumbnail}
+						title={data.videos['xddr-mpKC-M']?.title}
+					/>
+				</div>
+
+				<div class="video small">
 					<YoutubeVideo
 						videoId="LhrZMKmF0WE"
 						platform="yt"
@@ -200,7 +209,7 @@
 					/>
 				</div>
 
-				<div class="video">
+				<div class="video small">
 					<YoutubeVideo
 						videoId="3xOD2pT4xBQ"
 						platform="yt"
@@ -209,7 +218,7 @@
 					/>
 				</div>
 
-				<div class="video">
+				<div class="video small">
 					<YoutubeVideo
 						videoId="wemrSTU7fYA"
 						platform="yt"
@@ -218,7 +227,7 @@
 					/>
 				</div>
 
-				<div class="video">
+				<div class="video small">
 					<YoutubeVideo
 						videoId="ET1eQCj6LQQ"
 						platform="yt"
@@ -746,6 +755,7 @@
 			&:nth-of-type(3) {
 				/* grid-column: span 8; */
 			}
+
 			@media screen and (max-width: 900px) {
 				height: auto;
 				width: 100%;
