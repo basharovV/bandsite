@@ -97,7 +97,7 @@
 	{
 		"name": "Vinilo Cafe Pub",
 		"description": "Rock bar",
-		"category": "venue",
+		"category": "bar",
 		"jam": false,
 		"pos": {
 			"lat": 36.60659208098794,
