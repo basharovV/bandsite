@@ -50,7 +50,7 @@
 		_onMapClick(e) {
 			const targetElement = e.originalEvent.target;
 			const element = this._element;
-
+			console.log('original target', e.originalEvent.target);
 			if (this._handleClick && (targetElement === element || element.contains(targetElement))) {
 				this._element.classList.add('selected');
 				this._handleClick();
@@ -75,6 +75,11 @@
 			map.resize();
 			loadData();
 			isLoading = false;
+		});
+
+		window.addEventListener('resize', () => {
+			w = window.innerWidth;
+			h = window.innerHeight;
 		});
 	}
 
@@ -172,62 +177,65 @@
 		<p />
 	</div>
 
-	{#if selectedPlace}
-		<div class="info">
-			<h2>{selectedPlace.name}</h2>
-			<div>
-				<p>{selectedPlace.description}</p>
-				{#if selectedPlace.jam}
-					<p>✅ jam sessions</p>
-				{/if}
-				{#if selectedPlace?.links}
-					<span class="links">
-						{#each selectedPlace.links as link}
-							<a href={link.url}>{link.type}</a>
-						{/each}
-					</span>
-				{/if}
+	<div class="bottom">
+		{#if selectedPlace}
+			<div class="info">
+				<h2>{selectedPlace.name}</h2>
+				<div>
+					<p>{selectedPlace.description}</p>
+					{#if selectedPlace.jam}
+						<p>✅ jam sessions</p>
+					{/if}
+					{#if selectedPlace?.links}
+						<span class="links">
+							{#each selectedPlace.links as link}
+								<a href={link.url}>{link.type}</a>
+							{/each}
+						</span>
+					{/if}
+				</div>
 			</div>
-		</div>
-	{/if}
-
-	<div class="legend">
-		{#if showExplainer}
-			<p>
-				Illo! Hemos creado esta página para ayudar a bandas emergentes y artistas locales a
-				encontrar sitios donde actuar. <br />Sabemos que el tema de la música por la Costa es algo
-				lamentable, y queríamos contribuir algo a mejorar la situación. Esperamos que os sirva de
-				ayuda 🤘
-			</p>
-			<small class="signed">- Uncle John's Band</small>
-			<button
-				on:click={() => {
-					showExplainer = false;
-				}}>OK</button
-			>
-			<br />
 		{/if}
-		<p class="legend-label">Leyenda</p>
-		<span>
-			<div class="circle" style="background-color: {colors['bar']};" />
-			<p>Bar</p>
-		</span>
-		<span>
-			<div class="circle" style="background-color: {colors['venue']};" />
-			<p>Sala de conciertos</p>
-		</span>
-		<span>
-			<div class="circle" style="background-color: {colors['festival']};" />
-			<p>Festival</p>
-		</span>
-		<span>
-			<div class="circle" style="background-color: {colors['restaurant']};" />
-			<p>Restaurante</p>
-		</span>
-		<span>
-			<div class="circle" style="background-color: {colors['studio']};" />
-			<p>Estudio</p>
-		</span>
+
+		<div class="legend">
+			{#if showExplainer}
+				<p>
+					Illo! Hemos creado esta página para ayudar a bandas emergentes y artistas locales a
+					encontrar sitios donde actuar. <br />Sabemos que el tema de la música por la Costa es algo
+					lamentable, y queríamos contribuir algo a mejorar la situación. Esperamos que os sirva de
+					ayuda 🤘
+				</p>
+				<small class="signed">- Uncle John's Band</small>
+				<button
+					on:click={() => {
+						showExplainer = false;
+					}}>OK</button
+				>
+				<br />
+				<br />
+			{/if}
+			<p class="legend-label">Leyenda</p>
+			<span>
+				<div class="circle" style="background-color: {colors['bar']};" />
+				<p>Bar</p>
+			</span>
+			<span>
+				<div class="circle" style="background-color: {colors['venue']};" />
+				<p>Sala de conciertos</p>
+			</span>
+			<span>
+				<div class="circle" style="background-color: {colors['festival']};" />
+				<p>Festival</p>
+			</span>
+			<span>
+				<div class="circle" style="background-color: {colors['restaurant']};" />
+				<p>Restaurante</p>
+			</span>
+			<span>
+				<div class="circle" style="background-color: {colors['studio']};" />
+				<p>Estudio</p>
+			</span>
+		</div>
 	</div>
 </div>
 
@@ -336,15 +344,27 @@
 			top: 0;
 		}
 
-		.info {
+		.bottom {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
 			position: fixed;
 			bottom: 1em;
+			left: 1em;
 			right: 1em;
+			@media only screen and (max-width: 600px) {
+				flex-direction: column;
+			}
+		}
+
+		.info {
 			width: 350px;
 			z-index: 10;
 			border-radius: 2px;
 			@media only screen and (max-width: 600px) {
-				max-width: 100vw;
+				width: 100%;
+				padding: 0;
+				margin-bottom: 1em;
 			}
 			display: block;
 			padding: 0.5em 1em;
@@ -377,14 +397,15 @@
 		}
 
 		.legend {
-			position: fixed;
-			bottom: 1em;
-			left: 1em;
 			display: block;
 			background-color: #3a3939;
 			padding: 0.5em 1em;
 			color: white;
 			max-width: 350px;
+			@media only screen and (max-width: 600px) {
+				width: 100%;
+				max-width: 100%;
+			}
 			> .legend-label {
 				margin: 0;
 				width: 100%;
