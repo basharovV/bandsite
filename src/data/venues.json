@@ -5,7 +5,7 @@
 		"category": "venue",
 		"season": "all",
 		"pos": {
-			"lat": 36.71008471027362, 
+			"lat": 36.71008471027362,
 			"lng": -4.48191402658483
 		},
 		"links": [
@@ -34,6 +34,42 @@
 		}
 	},
 	{
+		"name": "Sonora Beach",
+		"description": "Chiringuito con buena música",
+		"category": "restaurant",
+		"season": "summer",
+		"pos": {
+			"lat": 36.4517806748372,
+			"lng": -5.0774063852903435
+		},
+		"links": [
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/sonorabeach/"
+			}
+		]
+	},
+	{
+		"name": "The Cable Studios",
+		"description": "Estudio de grabacion",
+		"category": "studio",
+		"season": "all",
+		"pos": {
+			"lat": 36.510425039075805,
+			"lng": -4.869904275493997
+		},
+		"links": [
+			{
+				"type": "Web",
+				"url": "https://thecablestudios.com/"
+			},
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/thecablestudios/"
+			}
+		]
+	},
+	{
 		"name": "Clarence Jazz Club",
 		"description": "Club de jazz puro y duro, con artistas locales, nacionales e internacionales. Jam sessions una vez a la semana.",
 		"genre": "jazz",
@@ -55,6 +91,26 @@
 			{
 				"type": "Facebook",
 				"url": "https://www.facebook.com/clarencejazzclub"
+			}
+		]
+	},
+	{
+		"name": "Vinilo Cafe Pub",
+		"description": "Rock bar",
+		"category": "venue",
+		"jam": false,
+		"pos": {
+			"lat": 36.60659208098794,
+			"lng": -4.533225998779938
+		},
+		"links": [
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/vinilo_cafepub/"
+			},
+			{
+				"type": "Facebook",
+				"url": "https://www.facebook.com/vinilocafepubbenalmadena"
 			}
 		]
 	},
@@ -100,12 +156,22 @@
 		"pos": {
 			"lat": 36.41713965359099,
 			"lng": -5.156279948539152
-		}
+		},
+		"links": [
+			{
+				"type": "Web",
+				"url": "https://louielouierockbar.com"
+			},
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/louielouierockestepona/"
+			}
+		]
 	},
 	{
 		"name": "Estudio Padrón",
 		"category": "studio",
-		"description": "Estudio de grabacion con local de ensayo y conciertos en línea",
+		"description": "Estudio de grabacion con salas de ensayo y conciertos en streaming",
 		"pos": {
 			"lat": 36.44007617144079,
 			"lng": -5.104830092748455
