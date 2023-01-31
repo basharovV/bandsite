@@ -10,6 +10,7 @@
 	let selectedPlace: any;
 	let isLoading = true;
 	let showExplainer = true;
+	let isMobile = false;
 
 	let colors = {
 		venue: '#FF6D6D',
@@ -32,25 +33,28 @@
 		}
 
 		showPopupOnHover() {
-			this._element.addEventListener('mouseenter', () => {
-				if (selectedPlace !== this.place && !this.getPopup().isOpen()) {
-					this.togglePopup();
-				}
-			});
-			this._element.addEventListener('mouseleave', () => {
-				if (selectedPlace !== this.place && this.getPopup().isOpen()) {
-					this.togglePopup();
-				}
-			});
+			if (!isMobile) {
+				this._element.addEventListener('mouseenter', () => {
+					if (selectedPlace !== this.place && !this.getPopup().isOpen()) {
+						this.togglePopup();
+					}
+				});
+				this._element.addEventListener('mouseleave', () => {
+					if (selectedPlace !== this.place && this.getPopup().isOpen()) {
+						this.togglePopup();
+					}
+				});
+			}
+
 			return this;
 		}
 
 		// the existing _onMapClick was there to trigger a popup
 		// but we are hijacking it to run a function we define
 		_onMapClick(e) {
+			console.log('e ', e);
 			const targetElement = e.originalEvent.target;
 			const element = this._element;
-			console.log('original target', e.originalEvent.target);
 			if (this._handleClick && (targetElement === element || element.contains(targetElement))) {
 				this._element.classList.add('selected');
 				this._handleClick();
@@ -66,8 +70,8 @@
 			container: 'map',
 			style:
 				'https://api.maptiler.com/maps/0f4a38e3-a830-4fa6-8d8d-0a745f993b06/style.json?key=GcUcBeo8aBFeRFp7EqoL', // stylesheet location
-			center: [-4.8807, 36.4934], // starting position [lng, lat]
-			zoom: 9.5, // starting zoom,
+			center: [-4.8807, 36.2934], // starting position [lng, lat]
+			zoom: isMobile ? 8.5 : 9.5, // starting zoom,
 			trackResize: true
 		});
 
@@ -125,6 +129,7 @@
 	onMount(() => {
 		w = window.innerWidth;
 		h = window.innerHeight;
+		isMobile = w < 500;
 		console.log('mounted');
 		isMounted = true;
 		init();
@@ -186,6 +191,9 @@
 					{#if selectedPlace.jam}
 						<p>✅ jam sessions</p>
 					{/if}
+					{#if selectedPlace.season === 'summer'}
+						❄️ cerrado en invierno
+					{/if}
 					{#if selectedPlace?.links}
 						<span class="links">
 							{#each selectedPlace.links as link}
@@ -201,9 +209,8 @@
 			{#if showExplainer}
 				<p>
 					Illo! Hemos creado esta página para ayudar a bandas emergentes y artistas locales a
-					encontrar sitios donde actuar. <br />Sabemos que el tema de la música por la Costa es algo
-					lamentable, y queríamos contribuir algo a mejorar la situación. Esperamos que os sirva de
-					ayuda 🤘
+					encontrar sitios donde actuar, grabar y ensayar<br />Sabemos que el tema de la música por
+					la Costa es lamentable, pero esperamos que os sirva de algo de ayuda 🤘 
 				</p>
 				<small class="signed">- Uncle John's Band</small>
 				<button
@@ -375,6 +382,7 @@
 				color: #24efc4;
 				background-color: #3a3939;
 				padding: 0.5em 1em;
+				margin-top: 0;
 			}
 			.links {
 				display: flex;
