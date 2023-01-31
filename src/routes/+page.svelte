@@ -117,7 +117,7 @@
 				</div>
 
 				<section class="dates">
-					<h2>✼ {$t('home.shows.title')}</h2>
+					<h2><span>✼</span> {$t('home.shows.title')}</h2>
 					<table>
 						<th>{$t('home.shows.date')}</th>
 						<th>{$t('home.shows.location')}</th>
@@ -325,6 +325,15 @@
 {/if}
 
 <style lang="scss">
+	@keyframes rotate {
+		from {
+			transform: rotate(0turn);
+		}
+		to {
+			transform: rotate(-1turn);
+		}
+	}
+
 	container {
 		display: block;
 		max-width: 1250px;
@@ -659,6 +668,14 @@
 			background-color: #2c2626;
 			background-image: url('/dark-tire.png');
 
+			span {
+				display: inline-flex;
+				margin: 0;
+				padding: 0;
+				vertical-align: middle;
+				line-height: 0.8em;
+				animation: rotate 4s infinite reverse linear;
+			}
 			.show-date {
 				font-size: 0.8em;
 				white-space: nowrap;
@@ -824,14 +841,6 @@
 				background-color: white;
 				color: #030202;
 				transform: rotate(10deg);
-			}
-		}
-		@keyframes rotate {
-			from {
-				transform: rotate(0turn);
-			}
-			to {
-				transform: rotate(-1turn);
 			}
 		}
 		.rehearsals {
