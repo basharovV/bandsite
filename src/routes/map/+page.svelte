@@ -16,8 +16,9 @@
 	let filteredVenues = venues;
 	let markers: Marker[] = [];
 
-	$: {
-		if (hasJamSessions) {
+	function onJamCheck(e: Event) {
+		const checked = e.currentTarget.checked;
+		if (checked) {
 			// filter the list, update indexes
 			filteredVenues = venues.filter((v) => v.jam);
 			markers.forEach((m) => {
@@ -30,13 +31,18 @@
 				shouldFly = true;
 				selectedPlaceIdx = 0; // go to first
 			}
+			// If the new
 		} else {
 			filteredVenues = venues;
 			markers.forEach((m) => {
 				m.remove();
 				m.addTo(map);
 			});
+			selectedPlaceIdx = -1;
 		}
+	}
+
+	$: {
 		if (selectedPlaceIdx > -1) {
 			selectedPlace = filteredVenues[selectedPlaceIdx];
 			const marker = document.querySelector(`.marker-${selectedPlace.id}`);
@@ -49,8 +55,8 @@
 			}
 			if (shouldFly) {
 				map.flyTo({
-					center: [selectedPlace.pos.lng, selectedPlace.pos.lat - 0.2],
-					zoom: 8.5,
+					center: isMobile ? [selectedPlace.pos.lng, selectedPlace.pos.lat - 0.2] : [selectedPlace.pos.lng, selectedPlace.pos.lat],
+					zoom: isMobile? 8.5 : 9.5,
 					speed: 0.3,
 					curve: 1
 				});
@@ -58,6 +64,12 @@
 			}
 		} else {
 			selectedPlace = null;
+			if (isMounted) {
+				const others = document.querySelectorAll(`[aria-label="Map marker"]`);
+				others.forEach((m) => {
+					m.classList.remove('selected');
+				});
+			}
 		}
 	}
 
@@ -125,7 +137,7 @@
 			container: 'map',
 			style:
 				'https://api.maptiler.com/maps/0f4a38e3-a830-4fa6-8d8d-0a745f993b06/style.json?key=GcUcBeo8aBFeRFp7EqoL', // stylesheet location
-			center: [-4.8807, 36.2934], // starting position [lng, lat]
+			center: isMobile ? [-4.8807, 36.2934] : [-4.8807, 36.4934], // starting position [lng, lat]
 			zoom: isMobile ? 8.5 : 9.5, // starting zoom,
 			trackResize: true
 		});
@@ -337,7 +349,7 @@
 				<p>Estudio</p>
 			</span>
 			<label>
-				<input type="checkbox" bind:checked={hasJamSessions} /> ver jam sessions
+				<input type="checkbox" on:change={onJamCheck} /> ver jam sessions
 			</label>
 		</div>
 	</div>
@@ -366,7 +378,6 @@
 				align-items: center;
 				@media only screen and (max-width: 600px) {
 					align-items: flex-start;
-					
 				}
 
 				* {
@@ -545,6 +556,10 @@
 				background-color: #3a3939;
 				color: white;
 				z-index: 4;
+				&:hover {
+					cursor: pointer;
+					background-color: #565454;
+				}
 				&.disabled {
 					color: rgb(139, 134, 134);
 				}
@@ -561,6 +576,10 @@
 				align-items: center;
 				color: white;
 				z-index: 4;
+				&:hover {
+					cursor: pointer;
+					background-color: #565454;
+				}
 				justify-content: center;
 				&.disabled {
 					color: rgb(139, 134, 134);
