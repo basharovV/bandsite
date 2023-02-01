@@ -1,40 +1,85 @@
 [
+
 	{
-		"name": "CSA Las Vegas / Sopa Jervía",
-		"description": "Colectivo hazlo-tú-mismx situado en Málaga. Música, arte y cultura independiente.",
-		"category": "venue",
-		"season": "all",
+		"name": "Wakana",
+		"id": "wakana",
+		"category": "festival",
+		"description": "Wakana Reunion es un festival de musica en un glamping a la orilla de un lago. Durante el año tambien ponen conciertos (Wakana Sunsets)",
 		"pos": {
-			"lat": 36.71008471027362,
-			"lng": -4.48191402658483
+			"lat": 36.31098387314521,
+			"lng": -5.745734161512633
 		},
 		"links": [
 			{
-				"type": "Bandcamp",
-				"url": "https://csalasvegas.bandcamp.com/"
-			},
-			{
-				"type": "Instagram",
-				"url": "https://www.instagram.com/sopajervia/"
-			},
-			{
-				"type": "Facebook",
-				"url": "https://www.facebook.com/sopajervia"
+				"type": "Web",
+				"url": "https://wakanalakereunion.com/"
 			}
 		]
 	},
 	{
-		"name": "House of Flow",
-		"description": "Cafe, restaurante, lounge bar y espacio de eventos",
-		"category": "restaurant",
-		"season": "summer",
+		"name": "Louie Louie",
+		"id": "louie",
+		"description": "Sala de conciertos",
+		"category": "venue",
 		"pos": {
-			"lat": 36.523612938385895,
-			"lng": -5.045400890799582
-		}
+			"lat": 36.41713965359099,
+			"lng": -5.156279948539152
+		},
+		"links": [
+			{
+				"type": "Web",
+				"url": "https://louielouierockbar.com"
+			},
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/louielouierockestepona/"
+			}
+		]
+	},
+	{
+		"name": "Estudio Padrón",
+		"id": "padron",
+		"category": "studio",
+		"jam": true,
+		"description": "Estudio con salas de ensayo y conciertos en streaming. Jam sessions cada dos semanas.",
+		"pos": {
+			"lat": 36.44007617144079,
+			"lng": -5.104830092748455
+		},
+
+		"links": [
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/estudiopadronn/"
+			},
+			{
+				"type": "YouTube",
+				"url": "https://www.youtube.com/@estudiopadron6406"
+			}
+		]
+	},
+	{
+		"name": "Cat's Kitchen (La Catarina)",
+		"id": "cats",
+		"description": "Restaurante y cervecería con escenario. Jams de rock los viernes, de jazz los sábados.",
+		"genre": "Rock, folk",
+		"jam": true,
+		"category": "restaurant",
+		"pos": {
+			"lat": 36.45679578972755,
+			"lng": -5.0605926025490096
+		},
+
+		"links": [
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/catskitchenestepona/"
+			}
+		]
 	},
 	{
 		"name": "Sonora Beach",
+		"id": "sonora",
 		"description": "Chiringuito con buena música",
 		"category": "restaurant",
 		"season": "summer",
@@ -50,7 +95,35 @@
 		]
 	},
 	{
+		"name": "House of Flow",
+		"id": "flow",
+		"description": "Cafe, restaurante, lounge bar y espacio de eventos",
+		"category": "restaurant",
+		"season": "summer",
+		"pos": {
+			"lat": 36.523612938385895,
+			"lng": -5.045400890799582
+		}
+	},
+	{
+		"name": "Sala Premier",
+		"id": "premier",
+		"description": "Sala de conciertos",
+		"category": "venue",
+		"pos": {
+			"lat": 36.510823187089635,
+			"lng": -4.887329016797941
+		},
+		"links": [
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/premiereclubmarbella/"
+			}
+		]
+	},
+	{
 		"name": "The Cable Studios",
+		"id": "cable",
 		"description": "Estudio de grabacion",
 		"category": "studio",
 		"season": "all",
@@ -70,7 +143,91 @@
 		]
 	},
 	{
+		"name": "The Farm",
+		"id": "farm",
+		"description": "Restaurante con eventos acusticos.",
+		"category": "restaurant",
+		"season": "summer",
+		"pos": {
+			"lat": 36.50985257058753,
+			"lng": -4.882639296723966
+		},
+		"links": [
+			{
+				"type": "Web",
+				"url": "https://thefarm-marbella.com/"
+			},
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/thefarmmarbella/?hl=en"
+			}
+		]
+	},
+	{
+		"name": "Ojeando Festival",
+		"id": "ojeando",
+		"category": "festival",
+		"description": "Festival de música independiente",
+		"genre": "Rock",
+		"date": "Julio",
+		"pos": {
+			"lat": 36.565110380283315,
+			"lng": -4.856493394302047
+		},
+
+		"links": [
+			{
+				"type": "Web",
+				"url": "https://ojeandofestival.com/"
+			}
+		]
+	},
+	{
+		"name": "Estudios Tarantula",
+		"id": "tarantula",
+		"description": "Estudio de grabacion con local de ensayo y conciertos en línea",
+		"category": "studio",
+		"pos": {
+			"lat": 36.511376150058176,
+			"lng": -4.8902843176473105
+		}
+	},
+	{
+		"name": "Bonnet Bar Café",
+		"id": "bonnet",
+		"description": "Rock bar",
+		"category": "bar",
+		"pos": {
+			"lat": 36.54270467545071,
+			"lng": -4.617291854677415
+		},
+		"links": [
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/bonnetfuengirola/"
+			}
+		]
+	},
+	{
+		"name": "Pogs Irish Pub",
+		"id": "pogs",
+		"description": "Pub irlandés con música en directo",
+		"genre": "Rock, folk",
+		"category": "bar",
+		"pos": {
+			"lat": 36.543300192296115,
+			"lng": -4.619981258337106
+		},
+		"links": [
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/pogsfuengirola/"
+			}
+		]
+	},
+	{
 		"name": "Clarence Jazz Club",
+		"id": "clarence",
 		"description": "Club de jazz puro y duro, con artistas locales, nacionales e internacionales. Jam sessions una vez a la semana.",
 		"genre": "jazz",
 		"category": "venue",
@@ -96,6 +253,7 @@
 	},
 	{
 		"name": "Vinilo Cafe Pub",
+		"id": "vinilo",
 		"description": "Rock bar",
 		"category": "bar",
 		"jam": false,
@@ -115,7 +273,33 @@
 		]
 	},
 	{
+		"name": "CSA Las Vegas / Sopa Jervía",
+		"id": "csa",
+		"description": "Colectivo hazlo-tú-mismx situado en Málaga. Música, arte y cultura independiente.",
+		"category": "venue",
+		"season": "all",
+		"pos": {
+			"lat": 36.71008471027362,
+			"lng": -4.48191402658483
+		},
+		"links": [
+			{
+				"type": "Bandcamp",
+				"url": "https://csalasvegas.bandcamp.com/"
+			},
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/sopajervia/"
+			},
+			{
+				"type": "Facebook",
+				"url": "https://www.facebook.com/sopajervia"
+			}
+		]
+	},
+	{
 		"name": "La Polivalente",
+		"id": "polivalente",
 		"description": "Espacio cultural abierto a todo tipo de música",
 		"category": "venue",
 		"jam": true,
@@ -131,169 +315,6 @@
 			{
 				"type": "Instagram",
 				"url": "https://www.instagram.com/lapolivalentelagunillas/"
-			}
-		]
-	},
-	{
-		"name": "Wakana",
-		"category": "festival",
-		"description": "Wakana Reunion es un festival de musica en un glamping a la orilla de un lago. Durante el año tambien ponen conciertos (Wakana Sunsets)",
-		"pos": {
-			"lat": 36.31098387314521,
-			"lng": -5.745734161512633
-		},
-		"links": [
-			{
-				"type": "Web",
-				"url": "https://wakanalakereunion.com/"
-			}
-		]
-	},
-	{
-		"name": "Louie Louie",
-		"description": "Sala de conciertos",
-		"category": "venue",
-		"pos": {
-			"lat": 36.41713965359099,
-			"lng": -5.156279948539152
-		},
-		"links": [
-			{
-				"type": "Web",
-				"url": "https://louielouierockbar.com"
-			},
-			{
-				"type": "Instagram",
-				"url": "https://www.instagram.com/louielouierockestepona/"
-			}
-		]
-	},
-	{
-		"name": "Estudio Padrón",
-		"category": "studio",
-		"description": "Estudio de grabacion con salas de ensayo y conciertos en streaming",
-		"pos": {
-			"lat": 36.44007617144079,
-			"lng": -5.104830092748455
-		},
-
-		"links": [
-			{
-				"type": "Instagram",
-				"url": "https://www.instagram.com/estudiopadronn/"
-			},
-			{
-				"type": "YouTube",
-				"url": "https://www.youtube.com/@estudiopadron6406"
-			}
-		]
-	},
-	{
-		"name": "Ojeando Festival",
-		"category": "festival",
-		"description": "Festival de música independiente",
-		"genre": "Rock",
-		"date": "Julio",
-		"pos": {
-			"lat": 36.565110380283315,
-			"lng": -4.856493394302047
-		},
-
-		"links": [
-			{
-				"type": "Web",
-				"url": "https://ojeandofestival.com/"
-			}
-		]
-	},
-	{
-		"name": "Pogs Irish Pub",
-		"description": "Pub irlandés con música en directo",
-		"genre": "Rock, folk",
-		"category": "bar",
-		"pos": {
-			"lat": 36.543300192296115,
-			"lng": -4.619981258337106
-		},
-		"links": [
-			{
-				"type": "Instagram",
-				"url": "https://www.instagram.com/pogsfuengirola/"
-			}
-		]
-	},
-	{
-		"name": "Estudios Tarantula",
-		"description": "Estudio de grabacion con local de ensayo y conciertos en línea",
-		"category": "studio",
-		"pos": {
-			"lat": 36.511376150058176,
-			"lng": -4.8902843176473105
-		}
-	},
-	{
-		"name": "Cat's Kitchen (La Catarina)",
-		"description": "Restaurante y cervecería con escenario y equipo de sonido",
-		"genre": "Rock, folk",
-		"category": "restaurant",
-		"pos": {
-			"lat": 36.45679578972755,
-			"lng": -5.0605926025490096
-		},
-
-		"links": [
-			{
-				"type": "Instagram",
-				"url": "https://www.instagram.com/catskitchenestepona/"
-			}
-		]
-	},
-	{
-		"name": "The Farm",
-		"description": "Restaurante con eventos acusticos. Solo abierto en verano.",
-		"category": "restaurant",
-		"pos": {
-			"lat": 36.50985257058753,
-			"lng": -4.882639296723966
-		},
-		"links": [
-			{
-				"type": "Web",
-				"url": "https://thefarm-marbella.com/"
-			},
-			{
-				"type": "Instagram",
-				"url": "https://www.instagram.com/thefarmmarbella/?hl=en"
-			}
-		]
-	},
-	{
-		"name": "Sala Premier",
-		"description": "Sala de conciertos",
-		"category": "venue",
-		"pos": {
-			"lat": 36.510823187089635,
-			"lng": -4.887329016797941
-		},
-		"links": [
-			{
-				"type": "Instagram",
-				"url": "https://www.instagram.com/premiereclubmarbella/"
-			}
-		]
-	},
-	{
-		"name": "Bonnet Bar Café",
-		"description": "Rock bar",
-		"category": "bar",
-		"pos": {
-			"lat": 36.54270467545071,
-			"lng": -4.617291854677415
-		},
-		"links": [
-			{
-				"type": "Instagram",
-				"url": "https://www.instagram.com/bonnetfuengirola/"
 			}
 		]
 	}

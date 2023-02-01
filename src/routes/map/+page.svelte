@@ -8,6 +8,59 @@
 	let isMounted = false;
 	let isReady = false;
 	let selectedPlace: any;
+	let selectedPlaceIdx: number = -1;
+	let shouldFly = false;
+
+	let hasJamSessions = false;
+
+	let filteredVenues = venues;
+	let markers: Marker[] = [];
+
+	$: {
+		if (hasJamSessions) {
+			// filter the list, update indexes
+			filteredVenues = venues.filter((v) => v.jam);
+			markers.forEach((m) => {
+				m.remove();
+				if (filteredVenues.map((p) => p.name).includes(m.place?.name)) {
+					m.addTo(map);
+				}
+			});
+			if (!filteredVenues.map((p) => p.name).includes(selectedPlace?.name)) {
+				shouldFly = true;
+				selectedPlaceIdx = 0; // go to first
+			}
+		} else {
+			filteredVenues = venues;
+			markers.forEach((m) => {
+				m.remove();
+				m.addTo(map);
+			});
+		}
+		if (selectedPlaceIdx > -1) {
+			selectedPlace = filteredVenues[selectedPlaceIdx];
+			const marker = document.querySelector(`.marker-${selectedPlace.id}`);
+			if (marker) {
+				marker.classList.add('selected');
+				const others = document.querySelectorAll(`:not(.marker-${selectedPlace.id}`);
+				others.forEach((m) => {
+					m.classList.remove('selected');
+				});
+			}
+			if (shouldFly) {
+				map.flyTo({
+					center: [selectedPlace.pos.lng, selectedPlace.pos.lat - 0.2],
+					zoom: 8.5,
+					speed: 0.3,
+					curve: 1
+				});
+				shouldFly = false;
+			}
+		} else {
+			selectedPlace = null;
+		}
+	}
+
 	let isLoading = true;
 	let showExplainer = true;
 	let isMobile = false;
@@ -22,13 +75,15 @@
 
 	// extend mapboxGL Marker so we can pass in an onClick handler
 	class ClickableMarker extends Marker {
-		setPlace(place: any) {
+		setPlace(place: any, idx: number) {
+			this.placeId = idx;
 			this.place = place;
 			return this;
 		}
 		// new method onClick, sets _handleClick to a function you pass in
 		onClick(handleClick) {
 			this._handleClick = handleClick;
+			this._element.classList.add(`marker-${this.place.id}`);
 			return this;
 		}
 
@@ -94,12 +149,13 @@
 			markerRadius = 10,
 			linearOffset = 25;
 
-		venues.forEach((venue) => {
-			new ClickableMarker({
-				color: venue.category !== undefined ? colors[venue?.category] : '#FFFFFF'
-			})
-				.setPopup(
-					new Popup().setHTML(`
+		filteredVenues.forEach((venue, idx) => {
+			markers.push(
+				new ClickableMarker({
+					color: venue.category !== undefined ? colors[venue?.category] : '#FFFFFF'
+				})
+					.setPopup(
+						new Popup().setHTML(`
                 <div>
                     <h1 class="popup-title">
                         ${venue.name}
@@ -107,20 +163,35 @@
                     <h2 class="popup-description">${venue.description}</h2>
 					<p>Click para más detalles</p>
                 </div>`)
-				) // add popup
-				.setLngLat([venue.pos.lng, venue.pos.lat])
-				.addTo(map)
-				.setPlace(venue)
-				.showPopupOnHover()
-				.onClick(() => {
-					selectedPlace = venue;
-				});
+					) // add popup
+					.setLngLat([venue.pos.lng, venue.pos.lat])
+					.addTo(map)
+					.setPlace(venue, idx)
+					.showPopupOnHover()
+					.onClick(() => {
+						selectedPlaceIdx = idx;
+					})
+			);
 		});
 	}
 
 	function onMapLoad() {
 		console.log('map loaded');
 		isReady = true;
+	}
+
+	function goToPrevPlace() {
+		shouldFly = true;
+		if (selectedPlaceIdx >= 1) {
+			selectedPlaceIdx = selectedPlaceIdx - 1;
+		}
+	}
+
+	function goToNextPlace() {
+		shouldFly = true;
+		if (selectedPlaceIdx < filteredVenues.length - 1) {
+			selectedPlaceIdx = selectedPlaceIdx + 1;
+		}
 	}
 
 	let w;
@@ -182,11 +253,34 @@
 		<p />
 	</div>
 
-	<div class="bottom">
+	<div class="bottom" class:has-info={selectedPlace}>
 		{#if selectedPlace}
 			<div class="info">
-				<h2>{selectedPlace.name}</h2>
-				<div>
+				<div
+					class="circle-button close"
+					on:click={() => {
+						selectedPlaceIdx = -1;
+					}}
+				>
+					<p>x</p>
+				</div>
+
+				<div class="header">
+					<div class="prev" class:disabled={selectedPlaceIdx === 0} on:click={goToPrevPlace}>
+						<p>←</p>
+					</div>
+					<h2>
+						{selectedPlace.name}
+					</h2>
+					<div
+						class="next"
+						class:disabled={selectedPlaceIdx === filteredVenues.length - 1}
+						on:click={goToNextPlace}
+					>
+						<p>→</p>
+					</div>
+				</div>
+				<div class="content">
 					<p>{selectedPlace.description}</p>
 					{#if selectedPlace.jam}
 						<p>✅ jam sessions</p>
@@ -210,7 +304,7 @@
 				<p>
 					Illo! Hemos creado esta página para ayudar a bandas emergentes y artistas locales a
 					encontrar sitios donde actuar, grabar y ensayar<br />Sabemos que el tema de la música por
-					la Costa es lamentable, pero esperamos que os sirva de algo de ayuda 🤘 
+					la Costa es lamentable, pero esperamos que os sirva de algo de ayuda 🤘
 				</p>
 				<small class="signed">- Uncle John's Band</small>
 				<button
@@ -242,6 +336,9 @@
 				<div class="circle" style="background-color: {colors['studio']};" />
 				<p>Estudio</p>
 			</span>
+			<label>
+				<input type="checkbox" bind:checked={hasJamSessions} /> ver jam sessions
+			</label>
 		</div>
 	</div>
 </div>
@@ -267,11 +364,18 @@
 				display: flex;
 				flex-direction: column;
 				align-items: center;
+				@media only screen and (max-width: 600px) {
+					align-items: flex-start;
+					
+				}
 
 				* {
 					margin: 0;
 				}
 				h2 {
+					@media only screen and (max-width: 600px) {
+						padding: 0;
+					}
 					/* background-color: #3a3939; */
 					padding: 0 0.5em;
 					/* color: aliceblue; */
@@ -303,6 +407,9 @@
 			/* Change the cursor to a pointer on hover so the user knows it's clickable */
 			:global(.mapboxgl-marker:hover) {
 				cursor: pointer;
+			}
+			:global(.mapboxgl-marker.selected) {
+				z-index: 1000 !important;
 			}
 			:global(.mapboxgl-marker.selected svg > g > g:nth-child(2)) {
 				fill: #000000 !important;
@@ -354,13 +461,24 @@
 		.bottom {
 			display: flex;
 			flex-direction: row;
-			justify-content: space-between;
+			justify-content: flex-start;
 			position: fixed;
 			bottom: 1em;
 			left: 1em;
 			right: 1em;
+
+			&.has-info {
+				flex-direction: row-reverse;
+				justify-content: space-between;
+				align-items: flex-end;
+			}
+
 			@media only screen and (max-width: 600px) {
 				flex-direction: column;
+				&.has-info {
+					flex-direction: column;
+					align-items: flex-end;
+				}
 			}
 		}
 
@@ -376,14 +494,83 @@
 			display: block;
 			padding: 0.5em 1em;
 			color: white;
+			position: relative;
 
+			.header {
+				display: grid;
+				grid-template-columns: auto 1fr auto;
+				margin-bottom: 0.5em;
+			}
 			h2 {
 				font-weight: bold;
 				color: #24efc4;
 				background-color: #3a3939;
 				padding: 0.5em 1em;
+				margin: 0;
 				margin-top: 0;
+				position: relative;
 			}
+
+			.circle-button {
+				background-color: #3a3939;
+				border-radius: 30px;
+				width: 30px;
+				height: 30px;
+				&:hover {
+					opacity: 0.5;
+				}
+				p {
+					margin: 0;
+					text-align: center;
+					vertical-align: middle;
+					line-height: normal;
+					padding: 0;
+					font-size: 1.4em;
+				}
+			}
+
+			.close {
+				position: absolute;
+				top: -35px;
+				right: 0;
+				left: 0;
+				margin: 0 auto;
+			}
+			.next {
+				width: 35px;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background-color: #3a3939;
+				color: white;
+				z-index: 4;
+				&.disabled {
+					color: rgb(139, 134, 134);
+				}
+				p {
+					line-height: 1em;
+					font-size: 1.6em;
+				}
+			}
+			.prev {
+				width: 35px;
+				height: 100%;
+				display: flex;
+				background-color: #3a3939;
+				align-items: center;
+				color: white;
+				z-index: 4;
+				justify-content: center;
+				&.disabled {
+					color: rgb(139, 134, 134);
+				}
+				p {
+					line-height: 1em;
+					font-size: 1.6em;
+				}
+			}
+
 			.links {
 				display: flex;
 				flex-direction: row;
@@ -393,7 +580,7 @@
 				width: 100%;
 				display: block;
 			}
-			div {
+			.content {
 				background-color: #3a3939;
 				padding: 0.5em 1em;
 			}
