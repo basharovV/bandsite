@@ -1,21 +1,4 @@
 [
-
-	{
-		"name": "Wakana",
-		"id": "wakana",
-		"category": "festival",
-		"description": "Wakana Reunion es un festival de musica en un glamping a la orilla de un lago. Durante el año tambien ponen conciertos (Wakana Sunsets)",
-		"pos": {
-			"lat": 36.31098387314521,
-			"lng": -5.745734161512633
-		},
-		"links": [
-			{
-				"type": "Web",
-				"url": "https://wakanalakereunion.com/"
-			}
-		]
-	},
 	{
 		"name": "Louie Louie",
 		"id": "louie",

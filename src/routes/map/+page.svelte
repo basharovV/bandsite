@@ -55,8 +55,10 @@
 			}
 			if (shouldFly) {
 				map.flyTo({
-					center: isMobile ? [selectedPlace.pos.lng, selectedPlace.pos.lat - 0.2] : [selectedPlace.pos.lng, selectedPlace.pos.lat],
-					zoom: isMobile? 8.5 : 9.5,
+					center: isMobile
+						? [selectedPlace.pos.lng, selectedPlace.pos.lat - 0.2]
+						: [selectedPlace.pos.lng, selectedPlace.pos.lat],
+					zoom: isMobile ? 8.5 : 9.5,
 					speed: 0.3,
 					curve: 1
 				});
@@ -313,44 +315,49 @@
 
 		<div class="legend">
 			{#if showExplainer}
-				<p>
+				<p style="color: #DFEFE0">
 					Illo! Hemos creado esta página para ayudar a bandas emergentes y artistas locales a
-					encontrar sitios donde actuar, grabar y ensayar<br />Sabemos que el tema de la música por
-					la Costa es lamentable, pero esperamos que os sirva de algo de ayuda 🤘
+					encontrar sitios donde <span style="color: white">actuar, grabar y ensayar.</span><br /><br />Sabemos que el tema de la
+					música por la Costa deja mucho que desear, pero esperamos que os sirva de ayuda 🤘
 				</p>
-				<small class="signed">- Uncle John's Band</small>
+				<small class="signed"><a href="/">- Uncle John's Band</a></small>
 				<button
 					on:click={() => {
 						showExplainer = false;
 					}}>OK</button
 				>
 				<br />
-				<br />
+				<p style="border: 1px solid white;padding: 0.5em;">
+					Conoces un sitio que debería estar en el mapa? Manda un email a <a
+						href="mailto:contact@elpatorecords.com">contact@elpatorecords.com</a
+					>
+				</p>
+			{:else}
+				<p class="legend-label">Leyenda</p>
+				<span>
+					<div class="circle" style="background-color: {colors['bar']};" />
+					<p>Bar</p>
+				</span>
+				<span>
+					<div class="circle" style="background-color: {colors['venue']};" />
+					<p>Sala de conciertos</p>
+				</span>
+				<span>
+					<div class="circle" style="background-color: {colors['festival']};" />
+					<p>Festival</p>
+				</span>
+				<span>
+					<div class="circle" style="background-color: {colors['restaurant']};" />
+					<p>Restaurante</p>
+				</span>
+				<span>
+					<div class="circle" style="background-color: {colors['studio']};" />
+					<p>Estudio</p>
+				</span>
+				<label>
+					<input type="checkbox" on:change={onJamCheck} /> ver jam sessions
+				</label>
 			{/if}
-			<p class="legend-label">Leyenda</p>
-			<span>
-				<div class="circle" style="background-color: {colors['bar']};" />
-				<p>Bar</p>
-			</span>
-			<span>
-				<div class="circle" style="background-color: {colors['venue']};" />
-				<p>Sala de conciertos</p>
-			</span>
-			<span>
-				<div class="circle" style="background-color: {colors['festival']};" />
-				<p>Festival</p>
-			</span>
-			<span>
-				<div class="circle" style="background-color: {colors['restaurant']};" />
-				<p>Restaurante</p>
-			</span>
-			<span>
-				<div class="circle" style="background-color: {colors['studio']};" />
-				<p>Estudio</p>
-			</span>
-			<label>
-				<input type="checkbox" on:change={onJamCheck} /> ver jam sessions
-			</label>
 		</div>
 	</div>
 </div>
@@ -546,6 +553,9 @@
 				right: 0;
 				left: 0;
 				margin: 0 auto;
+				&:hover {
+					cursor: pointer;
+				}
 			}
 			.next {
 				width: 35px;
