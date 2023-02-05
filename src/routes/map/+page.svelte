@@ -183,7 +183,7 @@
 					.setPlace(venue, idx)
 					.showPopupOnHover()
 					.onClick(() => {
-						selectedPlaceIdx = idx;
+						selectedPlaceIdx = filteredVenues.findIndex(v => v.id === venue.id);
 					})
 			);
 		});
