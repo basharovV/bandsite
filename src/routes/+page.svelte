@@ -1,9 +1,9 @@
 <script lang="ts">
-	import YoutubeVideo from '../components/YoutubeVideo.svelte';
-	import { t, loading, locale } from '../lib/translations';
 	import SvelteSeo from 'svelte-seo';
+	import YoutubeVideo from '../components/YoutubeVideo.svelte';
 	import InstagramIcon from '../icons/InstagramIcon.svelte';
 	import MailIcon from '../icons/MailIcon.svelte';
+	import { loading, t } from '../lib/translations';
 
 	export let data;
 </script>
@@ -58,6 +58,16 @@
 						❂ {$t('home.bio.title')}
 					</h3>
 					<p><b> {$t('home.bio.body')} </b></p>
+					<small><b> {$t('home.bio.small')} </b></small>
+				</div>
+
+				<div class="video big">
+					<YoutubeVideo
+						videoId="HQkky9tImHY"
+						platform="yt"
+						thumbnail={data.videos['HQkky9tImHY']?.thumbnail}
+						title={data.videos['HQkky9tImHY']?.title}
+					/>
 				</div>
 
 				<div class="text-divider">
@@ -592,10 +602,10 @@
 		.bio {
 			grid-column: span 8;
 			padding: 0 0 1em;
-			text-align: left;
-			margin: 0;
+			text-align: center;
+			margin: 0 auto;
 			h3 {
-				margin: 1em 0 0 0;
+				margin: 1em auto 0;
 				font-family: 'Zina';
 				font-size: 2em;
 				max-width: 600px;
@@ -771,6 +781,9 @@
 
 			&:nth-of-type(3) {
 				/* grid-column: span 8; */
+			}
+			&.big {
+				grid-column: span 8;
 			}
 
 			@media screen and (max-width: 900px) {
