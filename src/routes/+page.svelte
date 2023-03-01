@@ -254,6 +254,8 @@
 					<h1>+ {$t('home.elpato.description')}</h1>
 				</section>
 
+
+
 				<div class="text-divider">
 					<p>There's a problem out there, somewhere</p>
 					<div class="page-divider" />
@@ -264,6 +266,25 @@
 					<p>I'm talking about this</p>
 				</div>
 
+				<section class="map">
+					<!-- <img src="el-pato-records.png" /> -->
+					<a href="/map"
+						><h2>☞ {$t('home.map.title')}</h2></a
+					>
+					<p>{$t('home.map.description')}</p>
+				</section>
+
+				<div class="text-divider">
+					<p>There's a problem out there, somewhere</p>
+					<div class="page-divider" />
+					<p>And we pretend like it just don't exist</p>
+					<div class="page-divider" />
+					<p>You know exactly what I'm talking about</p>
+					<div class="page-divider" />
+					<p>I'm talking about this</p>
+				</div>
+
+				
 				<section class="members">
 					<h1>{$t('home.band.title')}</h1>
 					<img src="reaper.png" />
@@ -330,7 +351,7 @@
 	>
 	<footer>
 		<img src="/logo.png" />
-		<p>© Uncle John's Band 2022</p>
+		<p>© El Pato Records 2023</p>
 	</footer>
 {/if}
 
@@ -856,7 +877,8 @@
 				transform: rotate(10deg);
 			}
 		}
-		.rehearsals {
+		.rehearsals,
+		.map {
 			margin: 2em 0;
 			grid-column: span 8;
 			color: rgb(44, 38, 38);
@@ -877,6 +899,10 @@
 				font-size: 1.8em;
 			}
 		}
+	}
+
+	.map {
+		background-image: url('/map_bg.png');
 	}
 
 	.page-divider {

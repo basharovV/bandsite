@@ -1,6 +1,6 @@
 {
 	"tagline": "desde 2022",
-    "subtitle": "se introducen a traves del medio digital",
+	"subtitle": "se introducen a traves del medio digital",
 	"shows": {
 		"title": "conciertos",
 		"date": "fecha",
@@ -25,5 +25,9 @@
 		"link": "más videos en nuestro canal YouTube",
 		"description": "ensayos, jams, grabaciones del estudio"
 	},
-	"rehearsals": "ensayos + jams"
+	"rehearsals": "ensayos + jams",
+	"map": {
+		"title": "Uncle John's Map 🗺",
+		"description": "Hemos creado un mápa interactivo de la escena musical en la Costa del Sol, para bandas locales y amantes de la música en directo. Salas de concierto, locales de ensayo y grabación, jam sessions, bares y restaurantes con bandas en directo."
+	}
 }

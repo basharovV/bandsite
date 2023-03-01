@@ -25,5 +25,9 @@
 		"link": "more on our YouTube channel",
 		"description": "rehearsals, jams, outtakes from the studio"
 	},
-	"rehearsals": "rehearsals + jams"
+	"rehearsals": "rehearsals + jams",
+	"map": {
+		"title": "Uncle John's Map 🗺",
+		"description": "We created this interactive map for local bands and music goers. Concert venues, rehearsal and recording spaces, jam sessions, restaurants and bars with live music around the Costa del Sol"
+	}
 }

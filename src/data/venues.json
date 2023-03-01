@@ -20,6 +20,26 @@
 		]
 	},
 	{
+		"name": "Huber Art & Food",
+		"id": "huber",
+		"description": "Galeria de arte, gastro-bar contemporáneo con música y artistas de todo tipo",
+		"category": "restaurant",
+		"pos": {
+			"lat": 36.4270313663247, 
+			"lng": -5.144921530044606
+		},
+		"links": [
+			{
+				"type": "Web",
+				"url": "http://elhuber.es/"
+			},
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/huberartandfood"
+			}
+		]
+	},
+	{
 		"name": "Estudio Padrón",
 		"id": "padron",
 		"category": "studio",
@@ -256,6 +276,27 @@
 		]
 	},
 	{
+		"name": "El Bar de Las Motos",
+		"id": "motos",
+		"description": "Rock bar con ambiente motero 🤘 Blues, soul, rockabilly, rock and roll",
+		"category": "bar",
+		"jam": false,
+		"pos": {
+			"lat": 36.59921573437085, 
+			"lng": -4.539920735554438
+		},
+		"links": [
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/bardelasmotos/"
+			},
+			{
+				"type": "Facebook",
+				"url": "https://www.facebook.com/bardelasmotos"
+			}
+		]
+	},
+	{
 		"name": "CSA Las Vegas / Sopa Jervía",
 		"id": "csa",
 		"description": "Colectivo hazlo-tú-mismx situado en Málaga. Música, arte y cultura independiente.",
@@ -298,6 +339,52 @@
 			{
 				"type": "Instagram",
 				"url": "https://www.instagram.com/lapolivalentelagunillas/"
+			}
+		]
+	},
+	{
+		"name": "Bonvivant Beer",
+		"id": "bonvivant",
+		"description": "Craft beer, cervecera artesana de Málaga",
+		"category": "bar",
+		"jam": false,
+		"pos": {
+			"lat": 36.59921573437085, 
+			"lng": -4.539920735554438
+		},
+		"links": [
+			{
+				"type": "Web",
+				"url": "https://bonvivant.beer/"
+			},
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/bonvivantbeer/"
+			},
+			{
+				"type": "Facebook",
+				"url": "https://www.facebook.com/cervezasbonvivant/"
+			}
+		]
+	},
+	{
+		"name": "Chiringuito La Inopia",
+		"id": "lainopia",
+		"description": "☀️ Chiringuito con buena música de todo tipo",
+		"category": "restaurant",
+		"jam": false,
+		"pos": {
+			"lat": 36.711107557484375, 
+			"lng": -4.2515960894769185
+		},
+		"links": [
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/la.inopia.chiringuito"
+			},
+			{
+				"type": "Facebook",
+				"url": "https://www.facebook.com/Lainopiachiringuito/"
 			}
 		]
 	}
