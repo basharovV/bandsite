@@ -25,7 +25,7 @@
 		"description": "Galeria de arte, gastro-bar contemporáneo con música y artistas de todo tipo",
 		"category": "restaurant",
 		"pos": {
-			"lat": 36.4270313663247, 
+			"lat": 36.4270313663247,
 			"lng": -5.144921530044606
 		},
 		"links": [
@@ -282,7 +282,7 @@
 		"category": "bar",
 		"jam": false,
 		"pos": {
-			"lat": 36.59921573437085, 
+			"lat": 36.59921573437085,
 			"lng": -4.539920735554438
 		},
 		"links": [
@@ -345,12 +345,12 @@
 	{
 		"name": "Bonvivant Beer",
 		"id": "bonvivant",
-		"description": "Craft beer, cervecera artesana de Málaga",
+		"description": "Craft beer, cervecera artesana de Málaga 🍺",
 		"category": "bar",
 		"jam": false,
 		"pos": {
-			"lat": 36.59921573437085, 
-			"lng": -4.539920735554438
+			"lat": 36.69300902059121,
+			"lng": -4.471851374726976
 		},
 		"links": [
 			{
@@ -368,13 +368,125 @@
 		]
 	},
 	{
+		"name": "Soho Sessions",
+		"id": "sohosessions",
+		"description": "Estudio de grabación. Servicios de grabación, mezcla y mastering profesional.",
+		"category": "studio",
+		"jam": false,
+		"pos": {
+			"lat": 36.71691188483551,
+			"lng": -4.422289161236116
+		},
+		"links": [
+			{
+				"type": "Web",
+				"url": "https://sohosessionsmalaga.com/"
+			},
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/soho.sessions/"
+			},
+			{
+				"type": "Facebook",
+				"url": "https://www.facebook.com/sohosessionsmalaga"
+			},
+			{
+				"type": "Teléfono",
+				"phone": "+34 695 15 22 01"
+			}
+		]
+	},
+	{
+		"name": "Moby Dick Recording Studio",
+		"id": "mobydick",
+		"description": "Estudio de grabación con equipo analógico en pleno centro de Málaga. Grabación, mezcla y mastering profesional.",
+		"category": "studio",
+		"jam": false,
+		"pos": {
+			"lat": 36.716929085286246,
+			"lng": -4.42227843239964
+		},
+		"links": [
+			{
+				"type": "Web",
+				"url": "https://mobydickestudio.com/el-estudio/"
+			},
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/mobydickestudio/"
+			},
+			{
+				"type": "Facebook",
+				"url": "https://www.facebook.com/Moby-Dick-Recording-Studio-156523891051910/"
+			},
+			{
+				"type": "Spotify",
+				"url": "https://open.spotify.com/playlist/67pPaEMkjwLC2eFLJ2857W?si=nbWpODkDSemOCwuJL5-kRg"
+			},
+			{
+				"type": "Teléfono",
+				"phone": "+34 666 70 48 71"
+			}
+		]
+	},
+	{
+		"name": "La Fábrica",
+		"id": "lafabrica",
+		"description": "Cervecería artesanal Cruzcampo y espacio cultural con música en directo casi todos los días 🍺",
+		"category": "bar",
+		"jam": false,
+		"pos": {
+			"lat": 36.71647248042314,
+			"lng": -4.423340190072556
+		},
+		"links": [
+			{
+				"type": "Web",
+				"url": "https://lafabricadecerveza.com/conciertos-en-malaga/"
+			},
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/Lafabricamalaga"
+			},
+			{
+				"type": "Facebook",
+				"url": "https://www.facebook.com/lafabricamalaga"
+			}
+		]
+	},
+	{
+		"name": "ZZ Pub",
+		"id": "zzpub",
+		"description": "Bar con música en vivo todas las noches, desde 1991. Rock, soul, blues, jazz, funk 🎸",
+		"category": "bar",
+		"jam": false,
+		"pos": {
+			"lat": 36.724086004902155,
+			"lng":  -4.4211153566190475
+		},
+		"links": [
+			{
+				"type": "Web",
+				"url": "http://www.zzpub.es/"
+			},
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/zzpub/"
+			},
+			{
+				"type": "Facebook",
+				"url": "https://www.facebook.com/ZZPUB/"
+			}
+		]
+	},
+	{
 		"name": "Chiringuito La Inopia",
 		"id": "lainopia",
 		"description": "☀️ Chiringuito con buena música de todo tipo",
 		"category": "restaurant",
 		"jam": false,
 		"pos": {
-			"lat": 36.711107557484375, 
+			"lat": 36.711107557484375,
 			"lng": -4.2515960894769185
 		},
 		"links": [

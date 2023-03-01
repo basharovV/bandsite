@@ -1,8 +1,8 @@
 <script lang="ts">
+	import maplibre, { Marker, NavigationControl, Popup } from 'maplibre-gl';
 	import { onMount } from 'svelte';
-	import maplibre, { NavigationControl, Marker, Popup } from 'maplibre-gl';
-	import venues from '../../data/venues.json';
 	import SvelteSeo from 'svelte-seo';
+	import venues from '../../data/venues.json';
 	let map: maplibregl.Map;
 	let mapElement;
 	let isMounted = false;
@@ -305,7 +305,13 @@
 					{#if selectedPlace?.links}
 						<span class="links">
 							{#each selectedPlace.links as link}
-								<a href={link.url}>{link.type}</a>
+								{#if link.url}
+									<a href={link.url}>{link.type}</a>
+								{:else if link.phone}
+									<p>🤙 {link.type}: {link.phone}</p>
+								{:else}
+									<p>{link.type}: {link.text}</p>
+								{/if}
 							{/each}
 						</span>
 					{/if}
@@ -603,7 +609,12 @@
 			.links {
 				display: flex;
 				flex-direction: row;
+				flex-wrap: wrap;
 				gap: 10px;
+				p {
+					margin: 0;
+					padding: 0;
+				}
 			}
 			span {
 				width: 100%;
