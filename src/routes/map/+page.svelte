@@ -262,7 +262,7 @@
 		<p class="label" />
 		<div>
 			<h1>Música en la Costa</h1>
-			<h2>Guía para bandas locales</h2>
+			<h2>mapa de la escena local</h2>
 		</div>
 		<p />
 	</div>
