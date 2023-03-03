@@ -322,8 +322,8 @@
 		<div class="legend">
 			{#if showExplainer}
 				<p style="color: #DFEFE0">
-					Illo! Hemos creado esta página para ayudar a bandas emergentes y artistas locales a
-					encontrar sitios donde <span style="color: white">actuar, grabar y ensayar.</span><br /><br />Sabemos que el tema de la
+					Illo! Hemos creado esta página para gente que busca ver música en directo, y para ayudar a bandas y artistas locales a
+					encontrar sitios donde <span style="color: white">actuar, grabar, ensayar</span><br /><br />Sabemos que el tema de la
 					música por la Costa deja mucho que desear, pero esperamos que os sirva de ayuda 🤘
 				</p>
 				<small class="signed"><a href="/">- Uncle John's Band</a></small>
