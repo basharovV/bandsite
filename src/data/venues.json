@@ -109,7 +109,28 @@
 		}
 	},
 	{
-		"name": "Sala Premier",
+		"name": "Brödernas",
+		"id": "brodernas",
+		"description": "Restaurante de hamburguesas con eventos de música en directo y jam sessions",
+		"category": "restaurant",
+		"jam": true,
+		"pos": {
+			"lat": 36.488993941348625, 
+			"lng": -4.959797939135885
+		},
+		"links": [
+			{
+				"type": "Web",
+				"url": "http://www.brodernas-marbella.com/"
+			},
+			{
+				"type": "Instagram",
+				"url": "http://www.brodernas-marbella.com/"
+			}
+		]
+	},
+	{
+		"name": "Sala Premiere",
 		"id": "premier",
 		"description": "Sala de conciertos",
 		"category": "venue",
@@ -188,12 +209,42 @@
 	{
 		"name": "Estudios Tarantula",
 		"id": "tarantula",
-		"description": "Estudio de grabacion con local de ensayo y conciertos en línea",
+		"description": "Estudio de grabación con local de ensayo y conciertos en línea",
 		"category": "studio",
 		"pos": {
 			"lat": 36.511376150058176,
 			"lng": -4.8902843176473105
-		}
+		},
+		"links": [
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/tarantulaestudios"
+			},
+			{
+				"type": "Facebook",
+				"url": "https://www.facebook.com/estudiostarantula/"
+			}
+		]
+	},
+	{
+		"name": "Fhersound Music Studios",
+		"id": "fhersound",
+		"description": "Estudio de grabación con equipo de alta calidad en pleno centro de Marbella",
+		"category": "studio",
+		"pos": {
+			"lat": 36.51425958305767, 
+			"lng": -4.881007908569272
+		},
+		"links": [
+			{
+				"type": "Web",
+				"url": "https://fhersound-music-studios.negocio.site"
+			},
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/fhersound_studios/"
+			}
+		]
 	},
 	{
 		"name": "Bonnet Bar Café",
