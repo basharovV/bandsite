@@ -105,13 +105,15 @@
 	$: {
 		if (selectedPlaceIdx > -1) {
 			selectedPlace = filteredVenues[selectedPlaceIdx];
-			const marker = document.querySelector(`.marker-${selectedPlace.id}`);
-			if (marker) {
-				marker.classList.add('selected');
-				const others = document.querySelectorAll(`:not(.marker-${selectedPlace.id}`);
-				others.forEach((m) => {
-					m.classList.remove('selected');
-				});
+			if (selectedPlace) {
+				const marker = document.querySelector(`.marker-${selectedPlace.id}`);
+				if (marker) {
+					marker.classList.add('selected');
+					const others = document.querySelectorAll(`:not(.marker-${selectedPlace.id}`);
+					others.forEach((m) => {
+						m.classList.remove('selected');
+					});
+				}
 			}
 			if (shouldFly) {
 				map.flyTo({
@@ -133,6 +135,7 @@
 				});
 			}
 		}
+		selectedPlaceTypes = selectedPlaceTypes;
 	}
 
 	let isLoading = true;
@@ -193,7 +196,8 @@
 				'https://api.maptiler.com/maps/0f4a38e3-a830-4fa6-8d8d-0a745f993b06/style.json?key=GcUcBeo8aBFeRFp7EqoL', // stylesheet location
 			center: isMobile ? [-4.8807, 36.2934] : [-4.9607, 36.4934], // starting position [lng, lat]
 			zoom: isMobile ? 8.5 : 9.5, // starting zoom,
-			trackResize: true
+			trackResize: true,
+			attributionControl: false
 		});
 
 		map.on('load', function () {
@@ -331,21 +335,6 @@
 					<p>x</p>
 				</div>
 
-				<div class="header">
-					<div class="prev" class:disabled={selectedPlaceIdx === 0} on:click={goToPrevPlace}>
-						<p>←</p>
-					</div>
-					<h2>
-						{selectedPlace.name}
-					</h2>
-					<div
-						class="next"
-						class:disabled={selectedPlaceIdx === filteredVenues.length - 1}
-						on:click={goToNextPlace}
-					>
-						<p>→</p>
-					</div>
-				</div>
 				<div class="content">
 					<p>{selectedPlace.description}</p>
 					{#if selectedPlace.jam}
@@ -367,6 +356,21 @@
 							{/each}
 						</span>
 					{/if}
+				</div>
+				<div class="header">
+					<div class="prev" class:disabled={selectedPlaceIdx === 0} on:click={goToPrevPlace}>
+						<p>←</p>
+					</div>
+					<h2>
+						{selectedPlace.name}
+					</h2>
+					<div
+						class="next"
+						class:disabled={selectedPlaceIdx === filteredVenues.length - 1}
+						on:click={goToNextPlace}
+					>
+						<p>→</p>
+					</div>
 				</div>
 			</div>
 		{/if}
@@ -570,7 +574,7 @@
 			.header {
 				display: grid;
 				grid-template-columns: auto 1fr auto;
-				margin-bottom: 0.5em;
+				margin-top: 0.5em;
 			}
 			h2 {
 				font-weight: bold;
@@ -618,6 +622,7 @@
 				justify-content: center;
 				background-color: #3a3939;
 				color: white;
+				user-select: none;
 				z-index: 4;
 				&:hover {
 					cursor: pointer;
@@ -639,6 +644,7 @@
 				align-items: center;
 				color: white;
 				z-index: 4;
+				user-select: none;
 				&:hover {
 					cursor: pointer;
 					background-color: #565454;
