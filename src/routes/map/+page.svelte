@@ -16,6 +16,37 @@
 	let filteredVenues = venues;
 	let markers: Marker[] = [];
 
+	/**
+	 * For the legend
+	 */
+	let placeTypes = {
+		venue: {
+			label: 'Sala',
+			color: '#FF6D6D'
+		},
+		bar: {
+			label: 'Bar',
+			color: '#EFCC24'
+		},
+		restaurant: {
+			label: 'Restaurante',
+			color: '#76BB69'
+		},
+		studio: {
+			label: 'Estudio',
+			color: '#6977BB'
+		},
+		festival: {
+			label: 'Festival',
+			color: '#26efc4'
+		}
+	};
+
+	/**
+	 * Ids of selected place types.
+	 */
+	let selectedPlaceTypes: string[] = [];
+
 	function onJamCheck(e: Event) {
 		const checked = e.currentTarget.checked;
 		if (checked) {
@@ -42,6 +73,35 @@
 		}
 	}
 
+	function onPlaceTypeSelected(placeType: string) {
+		if (selectedPlaceTypes.includes(placeType)) {
+			const idx = selectedPlaceTypes.findIndex((p) => p === placeType);
+			selectedPlaceTypes.splice(idx, 1);
+		} else {
+			selectedPlaceTypes.push(placeType);
+		}
+		selectedPlaceTypes = selectedPlaceTypes;
+
+		if (selectedPlaceTypes.length) {
+			// filter the list, update indexes
+			filteredVenues = venues.filter((v) => selectedPlaceTypes.includes(v.category));
+			// Re-add filtered markers
+			markers.forEach((m) => {
+				m.remove();
+				if (filteredVenues.map((p) => p.name).includes(m.place?.name)) {
+					m.addTo(map);
+				}
+			});
+		} else {
+			// Re-add all markers
+			filteredVenues = venues;
+			markers.forEach((m) => {
+				m.remove();
+				m.addTo(map);
+			});
+		}
+	}
+
 	$: {
 		if (selectedPlaceIdx > -1) {
 			selectedPlace = filteredVenues[selectedPlaceIdx];
@@ -58,7 +118,7 @@
 					center: isMobile
 						? [selectedPlace.pos.lng, selectedPlace.pos.lat - 0.2]
 						: [selectedPlace.pos.lng, selectedPlace.pos.lat],
-					zoom: isMobile ? 8.5 : 9.5,
+					zoom: isMobile ? 8.5 : 10.5,
 					speed: 0.3,
 					curve: 1
 				});
@@ -78,14 +138,6 @@
 	let isLoading = true;
 	let showExplainer = true;
 	let isMobile = false;
-
-	let colors = {
-		venue: '#FF6D6D',
-		festival: '#26efc4',
-		bar: '#EFCC24',
-		restaurant: '#76BB69',
-		studio: '#6977BB'
-	};
 
 	// extend mapboxGL Marker so we can pass in an onClick handler
 	class ClickableMarker extends Marker {
@@ -139,7 +191,7 @@
 			container: 'map',
 			style:
 				'https://api.maptiler.com/maps/0f4a38e3-a830-4fa6-8d8d-0a745f993b06/style.json?key=GcUcBeo8aBFeRFp7EqoL', // stylesheet location
-			center: isMobile ? [-4.8807, 36.2934] : [-4.8807, 36.4934], // starting position [lng, lat]
+			center: isMobile ? [-4.8807, 36.2934] : [-4.9607, 36.4934], // starting position [lng, lat]
 			zoom: isMobile ? 8.5 : 9.5, // starting zoom,
 			trackResize: true
 		});
@@ -166,7 +218,7 @@
 		filteredVenues.forEach((venue, idx) => {
 			markers.push(
 				new ClickableMarker({
-					color: venue.category !== undefined ? colors[venue?.category] : '#FFFFFF'
+					color: venue.category !== undefined ? placeTypes[venue?.category]?.color : '#FFFFFF'
 				})
 					.setPopup(
 						new Popup().setHTML(`
@@ -183,7 +235,7 @@
 					.setPlace(venue, idx)
 					.showPopupOnHover()
 					.onClick(() => {
-						selectedPlaceIdx = filteredVenues.findIndex(v => v.id === venue.id);
+						selectedPlaceIdx = filteredVenues.findIndex((v) => v.id === venue.id);
 					})
 			);
 		});
@@ -322,16 +374,21 @@
 		<div class="legend">
 			{#if showExplainer}
 				<p style="color: #DFEFE0">
-					Illo! Hemos creado esta página para gente que busca ver música en directo, y para ayudar a bandas y artistas locales a
-					encontrar sitios donde <span style="color: white">actuar, grabar, ensayar</span><br /><br />Sabemos que el tema de la
-					música por la Costa deja mucho que desear, pero esperamos que os sirva de ayuda 🤘
+					Illo! Hemos creado esta página para gente que busca ver música en directo, y para ayudar a
+					bandas y artistas locales a encontrar sitios donde <span style="color: white"
+						>actuar, grabar y ensayar.</span
+					><br /><br />Sabemos que el tema de la música por la Costa deja mucho que desear, pero
+					esperamos que os sirva de ayuda 🤘
 				</p>
-				<small class="signed"><a href="/">- Uncle John's Band</a></small>
-				<button
-					on:click={() => {
-						showExplainer = false;
-					}}>OK</button
-				>
+				<div class="ok-section">
+					<button
+						class="explainer-ok-btn"
+						on:click={() => {
+							showExplainer = false;
+						}}>OK</button
+					>
+					<small class="signed"><a href="/">- Uncle John's Band</a></small>
+				</div>
 				<br />
 				<p style="border: 1px solid white;padding: 0.5em;">
 					Conoces un sitio que debería estar en el mapa? Manda un email a <a
@@ -340,28 +397,18 @@
 				</p>
 			{:else}
 				<p class="legend-label">Leyenda</p>
-				<span>
-					<div class="circle" style="background-color: {colors['bar']};" />
-					<p>Bar</p>
-				</span>
-				<span>
-					<div class="circle" style="background-color: {colors['venue']};" />
-					<p>Sala de conciertos</p>
-				</span>
-				<span>
-					<div class="circle" style="background-color: {colors['festival']};" />
-					<p>Festival</p>
-				</span>
-				<span>
-					<div class="circle" style="background-color: {colors['restaurant']};" />
-					<p>Restaurante</p>
-				</span>
-				<span>
-					<div class="circle" style="background-color: {colors['studio']};" />
-					<p>Estudio</p>
-				</span>
+				{#each Object.entries(placeTypes) as placeType}
+					<span
+						class="legend-item"
+						class:selected={selectedPlaceTypes.includes(placeType[0])}
+						on:click={() => onPlaceTypeSelected(placeType[0])}
+					>
+						<div class="circle" style="background-color: {placeType[1].color};" />
+						<p>{placeType[1].label}</p>
+					</span>
+				{/each}
 				<label>
-					<input type="checkbox" on:change={onJamCheck} /> ver jam sessions
+					<input type="checkbox" on:change={onJamCheck} /> jam sessions
 				</label>
 			{/if}
 		</div>
@@ -632,12 +679,13 @@
 		}
 
 		.legend {
-			display: block;
+			display: grid;
 			background-color: #3a3939;
 			padding: 0.5em 1em;
 			color: white;
 			max-width: 350px;
 			@media only screen and (max-width: 600px) {
+				display: block;
 				width: 100%;
 				max-width: 100%;
 			}
@@ -647,20 +695,48 @@
 				text-align: center;
 				color: rgb(143, 143, 139);
 			}
+
+			.ok-section {
+				display: grid;
+				grid-template-columns: 1fr auto;
+			}
+			.explainer-ok-btn {
+				width: fit-content;
+				align-self: flex-end;
+			}
 			.signed {
 				float: right;
 				top: 0em;
 				position: relative;
 			}
+
 			span {
+				vertical-align: middle;
+			}
+			.legend-item {
 				display: inline-flex;
 				vertical-align: middle;
+				position: relative;
+				border: 1px solid transparent;
+				padding: 0 0.5em;
+				margin: 0;
+
+				&:hover {
+					cursor: pointer;
+					border: 1px solid #7993a5;
+					border-radius: 2px;
+				}
+
+				&.selected {
+					background-color: #7993a5b6;
+					border: 1px solid white;
+				}
 
 				div {
 					margin: auto 0;
 				}
 				p {
-					margin: 0 0.5em;
+					margin: 0 0 0 0.5em;
 				}
 			}
 

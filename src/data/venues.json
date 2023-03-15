@@ -130,6 +130,31 @@
 		]
 	},
 	{
+		"name": "La Sala Banús",
+		"id": "lasala",
+		"description": "Restaurante, bar con música en directo 7 dias a la semana, conciertos de tributo.",
+		"category": "restaurant",
+		"jam": false,
+		"pos": {
+			"lat": 36.490322067274505,
+			"lng": -4.956439763934115
+		},
+		"links": [
+			{
+				"type": "Web",
+				"url": "http://www.lasalabanus.com/"
+			},
+			{
+				"type": "Facebook",
+				"url": "https://www.facebook.com/lasalabanus"
+			},
+			{
+				"type": "Instagram",
+				"url": "http://www.instagram.com/lasalabanus"
+			}
+		]
+	},
+	{
 		"name": "Sala Premiere",
 		"id": "premier",
 		"description": "Sala de conciertos",
@@ -263,6 +288,27 @@
 		]
 	},
 	{
+		"name": "Speakeasy Jazz Club & Cocktails",
+		"id": "speakeasy",
+		"description": "Jazz club y coctelería en Fuengirola",
+		"category": "bar",
+		"jam": false,
+		"pos": {
+			"lat": 36.5406589784493, 
+			"lng": -4.621609752289451
+		},
+		"links": [
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/speakeasyjazzandcocktails/"
+			},
+			{
+				"type": "Facebook",
+				"url": "https://www.facebook.com/SPEAKEASYJAZZANDCOCKTAILS/"
+			}
+		]
+	},
+	{
 		"name": "Pogs Irish Pub",
 		"id": "pogs",
 		"description": "Pub irlandés con música en directo",
@@ -390,6 +436,31 @@
 			{
 				"type": "Instagram",
 				"url": "https://www.instagram.com/lapolivalentelagunillas/"
+			}
+		]
+	},
+	{
+		"name": "Velvet Club Málaga",
+		"id": "velvet",
+		"description": "Sala de conciertos",
+		"category": "venue",
+		"jam": false,
+		"pos": {
+			"lat": 36.722919966742644,
+			"lng":  -4.419982645356255
+		},
+		"links": [
+			{
+				"type": "Web",
+				"url": "http://www.velvetclub.es/"
+			},
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/velvetclubmalaga/"
+			},
+			{
+				"type": "Facebook",
+				"url": "https://www.facebook.com/velvetclubmalaga"
 			}
 		]
 	},
@@ -527,6 +598,31 @@
 			{
 				"type": "Facebook",
 				"url": "https://www.facebook.com/ZZPUB/"
+			}
+		]
+	},
+	{
+		"name": "ELCAMM",
+		"id": "elcamm",
+		"description": "El Centro de Artes y Música Moderna de Málaga. Escuela de jazz y centro cultural, con una sala para conciertos",
+		"category": "school",
+		"jam": true,
+		"pos": {
+			"lat": 36.70986609942728, 
+			"lng": -4.467365383592686
+		},
+		"links": [
+			{
+				"type": "Web",
+				"url": "https://www.elcamm.es/"
+			},
+			{
+				"type": "Instagram",
+				"url": "https://www.instagram.com/elcamm_malaga/"
+			},
+			{
+				"type": "Facebook",
+				"url": "https://www.facebook.com/ELCAMMmalaga/"
 			}
 		]
 	},
