@@ -409,6 +409,7 @@
 					>
 						<div class="circle" style="background-color: {placeType[1].color};" />
 						<p>{placeType[1].label}</p>
+						<p style="opacity: 0.5">{venues.filter(v=>v.category === placeType[0]).length}</p>
 					</span>
 				{/each}
 				<label>
